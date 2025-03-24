@@ -109,10 +109,10 @@ Across various projects,
     <h2 className="text-3xl font-medium mb-6 tracking-tight">Info</h2>
     <div className="max-w-2xl opacity-80 leading-relaxed space-y-6 text-lg font-light">
       <p>
-        I’m a developer and student with <strong className="font-medium">1+ year</strong> of experience in web development and <strong className="font-medium">100+</strong> solved DSA problems across platforms like LeetCode and Codeforces. My focus is on building scalable, user-centric solutions with a blend of creativity and technical precision.
+        I’m a developer and student with <strong className="font-medium">1+ year</strong> of experience in web development and <strong className="font-medium">100+</strong> solved DSA problems across platforms like LeetCode and Codeforces. I specialize in front-end development, backend systems, and AI integrations, constantly refining my skills and exploring innovative solutions.
       </p>
       <p>
-        I have built <strong className="font-medium">5+</strong> full-stack projects, including AI-driven applications, web scrapers, and interactive platforms. I specialize in front-end development, backend systems, and AI integrations, constantly refining my skills and exploring innovative solutions.
+        I have built <strong className="font-medium">5+</strong> full-stack projects, including AI-driven applications, web scrapers, and interactive platforms.
       </p>
       <p>
         My expertise spans a wide range of technologies, including:
