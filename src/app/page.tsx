@@ -178,7 +178,7 @@ export default function Home() {
                           id="name"
                           name="name" // Required for EmailJS
                           required
-                          className="w-full p-2 bg-transparent border-b border-gray-700 focus:border-white outline-none transition-colors"
+                          className="w-full p-2 bg-transparent border-b  border-stone-800 focus:border-white outline-none transition-colors"
                         />
                       </div>
                       <div>
@@ -188,7 +188,7 @@ export default function Home() {
                           id="email"
                           name="email" // Required for EmailJS
                           required
-                          className="w-full p-2 bg-transparent border-b border-gray-700 focus:border-white outline-none transition-colors"
+                          className="w-full p-2 bg-transparent border-b border-stone-800 focus:border-white outline-none transition-colors"
                         />
                       </div>
                       <div>
@@ -198,7 +198,7 @@ export default function Home() {
                           name="message" // Required for EmailJS
                           rows={4}
                           required
-                          className="w-full p-2 bg-transparent border-b border-gray-700 focus:border-white outline-none transition-colors"
+                          className="w-full p-2 bg-transparent border-b  border-stone-800 focus:border-white outline-none transition-colors"
                         ></textarea>
                       </div>
                       <button

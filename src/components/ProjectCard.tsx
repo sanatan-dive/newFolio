@@ -1,10 +1,13 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { FaGithub, FaLink } from 'react-icons/fa';
-import { useState, useContext } from 'react';
+import { useState } from 'react';
+// Import your images correctly
+import project1 from "@/projects/project-1.webp";
+import project2 from "@/projects/project-2.webp";
+import project3 from "@/projects/project-3.webp";
+import project4 from "@/projects/project-4.webp";
 
-// Assuming you have a theme context in your app
-// If you don't already have one, you'll need to implement it
 interface ThemeContextType {
   theme: 'light' | 'dark';
 }
@@ -16,7 +19,8 @@ const ThemeContext = {
 };
 
 interface Project {
-  image: string;
+  // eslint-disable-next-line
+  image: any; 
   title: string;
   description: string;
   githubLink: string;
@@ -35,10 +39,11 @@ function ProjectCard({ project, index }: ProjectCardProps) {
     <ThemeContext.Consumer>
       {({ theme }) => (
         <div
-          className="group relative overflow-hidden h-60 sm:h-80 opacity-0 animate-fadeInUp font-manrope"
+          className="group relative overflow-hidden h-60 sm:h-80 opacity-0 animate-fadeInUp"
           style={{
             animationDelay: `${0.2 * index}s`,
             animationFillMode: 'forwards',
+            fontFamily: 'var(--font-manrope)' // Explicitly set font-family
           }}
           onClick={() => setIsActive(!isActive)}
         >
@@ -46,16 +51,17 @@ function ProjectCard({ project, index }: ProjectCardProps) {
             src={project.image}
             alt={project.title}
             fill
-            className={`object-cover transition-transform duration-700 group-hover:scale-110 filter ${theme === 'dark' ? 'grayscale' : 'grayscale-[50%]'}`}
+            className={`object-cover transition-transform duration-700 group-hover:scale-110 filter ${theme === 'dark' ? 'grayscale-25' : 'grayscale-50'}`}
           />
           
           {/* Info overlay - visible on hover (desktop) or tap (mobile) */}
           <div 
             className={`absolute inset-0 ${theme === 'light' ? 'bg-white' : 'bg-black'} ${theme === 'light' ? 'bg-opacity-80' : 'bg-opacity-60'} flex flex-col justify-end p-4 sm:p-6 backdrop-blur-sm transition-opacity duration-500
-              ${isActive ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}
+              ${isActive ? 'opacity-100' : 'opacity-0 hover:opacity-75'}`}
+            style={{ fontFamily: 'var(--font-manrope)' }} // Explicitly set font-family
           >
             <div className="flex items-center justify-between mb-2">
-              <h3 className={`text-xl sm:text-2xl font-semibold ${theme === 'light' ? 'text-black' : 'text-white'}`}>{project.title}</h3>
+              <h3 className={`text-xl sm:text-2xl font-semibold ${theme === 'light' ? 'text-black' : 'text-white'}`} style={{ fontFamily: 'var(--font-manrope)' }}>{project.title}</h3>
               <div className="flex gap-2 sm:gap-3">
                 <Link 
                   href={project.githubLink} 
@@ -75,7 +81,12 @@ function ProjectCard({ project, index }: ProjectCardProps) {
                 </Link>
               </div>
             </div>
-            <p className={`mb-3 sm:mb-4 text-sm sm:text-base font-light ${theme === 'light' ? 'text-gray-700' : 'text-gray-300'}`}>{project.description}</p>
+            <p 
+              className={`mb-3 sm:mb-4 text-sm sm:text-base font-light ${theme === 'light' ? 'text-gray-700' : 'text-gray-300'}`}
+              style={{ fontFamily: 'var(--font-manrope)' }}
+            >
+              {project.description}
+            </p>
             <div className="flex gap-3 sm:gap-4">
               <button 
                 className={`px-3 py-1.5 sm:px-4 sm:py-2 font-medium text-sm sm:text-base transition-colors duration-300 
@@ -83,6 +94,7 @@ function ProjectCard({ project, index }: ProjectCardProps) {
                     ? 'border border-black text-black hover:bg-black hover:text-white' 
                     : 'border border-white text-white hover:bg-white hover:text-black'}`}
                 onClick={(e) => e.stopPropagation()}
+                style={{ fontFamily: 'var(--font-manrope)' }}
               >
                 View Details
               </button>
@@ -95,6 +107,7 @@ function ProjectCard({ project, index }: ProjectCardProps) {
                     ? 'border border-black text-black hover:bg-black hover:text-white' 
                     : 'border border-white text-white hover:bg-white hover:text-black'}`}
                 onClick={(e) => e.stopPropagation()}
+                style={{ fontFamily: 'var(--font-manrope)' }}
               >
                 Visit Site
               </Link>
@@ -120,40 +133,49 @@ interface ProjectsSectionProps {
 export default function ProjectsSection({ activeSection, theme = 'dark' }: ProjectsSectionProps) {
   const projects: Project[] = [
     {
-      image: '/api/placeholder/600/400',
-      title: 'Project 1',
-      description: 'An innovative design and development solution',
-      githubLink: 'https://github.com/username/project1',
-      liveLink: 'https://project1.example.com',
+      image: project2,  
+      title: 'KOSU',
+      description: 'An event hosting platform for seamless hackathon organization, engagement hiring, utilizing AI automation and blockchain-based tokens and rewards.',
+      githubLink: 'https://github.com/sanatan-dive/kosu',
+      liveLink: 'https://kosu-xi.vercel.app/',
     },
     {
-      image: '/api/placeholder/600/400',
-      title: 'Project 2',
-      description: 'Creative digital experience platform',
-      githubLink: 'https://github.com/username/project2',
-      liveLink: 'https://project2.example.com',
+      image: project1,  
+      title: 'Learnify',
+      description: 'A web platform that curates top learning resources from YouTube, Udemy, Coursera, and blogs.',
+      githubLink: 'https://github.com/sanatan-dive/learnify',
+      liveLink: 'https://drive.google.com/file/d/1BcwIWMqF_JLxzu_MP2X9FZN4zvnJHMX7/view',
     },
     {
-      image: '/api/placeholder/600/400',
-      title: 'Project 3',
-      description: 'Modern web application architecture',
-      githubLink: 'https://github.com/username/project3',
-      liveLink: 'https://project3.example.com',
+      image: project3,  
+      title: 'Hackathon Club Website',
+      description: 'A platform to discover and register for hackathons, connect with developers, and showcase skills.',
+      githubLink: 'https://github.com/sanatan-dive/hackathon-club-frontend',
+      liveLink: 'https://hackathon-club-frontend.vercel.app/home',
     },
     {
-      image: '/api/placeholder/600/400',
-      title: 'Project 4',
-      description: 'Scalable enterprise solution',
-      githubLink: 'https://github.com/username/project4',
-      liveLink: 'https://project4.example.com',
+      image: project4,  
+      title: 'Twibble',
+      description: 'An AI-powered chatbot that mimics Twitter users’ personas for engaging conversations.',
+      githubLink: 'https://github.com/sanatan-dive/xchatbot',
+      liveLink: 'https://twibble-alpha.vercel.app/',
     },
   ];
+  
 
   return (
     <>
       {activeSection === 'projects' && (
-        <div className={`fade-in font-manrope px-4 sm:px-0 ${theme === 'light' ? 'text-black' : 'text-white'}`}>
-          <h2 className="text-2xl sm:text-3xl font-semibold mb-4 sm:mb-6">Projects</h2>
+        <div 
+          className={`fade-in px-4 sm:px-0 ${theme === 'light' ? 'text-black' : 'text-white'}`}
+          style={{ fontFamily: 'var(--font-manrope)' }} // Explicitly set font-family
+        >
+          <h2 
+            className="text-2xl sm:text-3xl font-semibold mb-4 sm:mb-6"
+            style={{ fontFamily: 'var(--font-manrope)' }}
+          >
+            Projects
+          </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
             {projects.map((project, index) => (
               <ProjectCard key={index} project={project} index={index} />
