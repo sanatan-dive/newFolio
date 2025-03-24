@@ -62,11 +62,10 @@ export default function Home() {
     
     emailjs
       .sendForm(
-        // @ts-expect-error okay
-       process.env.SERVICE_ID,
-       process.env.TEMPLATE_ID,
+       'service_5u6pqos',
+       'template_dwjpfxc',
         form,
-        process.env.PUBLIC_KEY
+        'b71CAHxhlq0Y5WvuO'
       )
       .then(
         () => {
