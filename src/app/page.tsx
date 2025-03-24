@@ -84,7 +84,7 @@ export default function Home() {
     <div
       className={`min-h-screen w-full transition-opacity duration-1000
         ${isLoading ? 'opacity-0' : 'opacity-100'} 
-        ${theme === 'dark' ? 'text-foreground bg-background' : 'text-foreground bg-background'}`}
+        ${theme === 'dark' ? 'text-foreground bg-background' : 'text-black bg-white'}`}
     >
       <Head>
         <title>Sanatan Sharma | Designer and Developer</title>
