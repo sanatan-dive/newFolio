@@ -16,6 +16,7 @@ export default function Navigation({ activeSection, setActiveSection, theme = 'd
     { id: 'home', label: 'Home' },
     { id: 'projects', label: 'Projects' },
     { id: 'info', label: 'Info' },
+    { id: 'links', label: 'Links' },
     { id: 'contact', label: 'Contact' },
     { id: 'feedback', label: 'Feedbacks' }
   ];
