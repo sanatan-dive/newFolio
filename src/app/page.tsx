@@ -83,10 +83,12 @@ export default function Home() {
                 <div className="fade-in font-poppins">
                   <h2 className="text-3xl font-medium mb-6 tracking-tight">Welcome</h2>
                   <p className="max-w-2xl opacity-80 leading-relaxed text-lg font-light">
+                    {/*  eslint-disable-next-line react/no-unescaped-entities */}
                   I'm a designer and developer passionate about crafting minimal, elegant digital experiences. My work blends clean aesthetics with thoughtful functionality, using modern technologies to build memorable interfaces.
                   Across various projects,
                   <br/>
                   <br/>
+                  {/*  eslint-disable-next-line react/no-unescaped-entities */}
                   I've achieved <strong>50K+</strong> impressions and <strong>1000+</strong> users within <strong>24K+</strong> hours, showcasing the reach and impact of my work.
                   </p>
                 </div>
@@ -103,8 +105,11 @@ export default function Home() {
                   <h2 className="text-3xl font-medium mb-6 tracking-tight">Info</h2>
                   <div className="max-w-2xl opacity-80 leading-relaxed space-y-6 text-lg font-light">
                   <p>
+                    
+                    {/*  eslint-disable-next-line react/no-unescaped-entities */}
                     I'm a developer and student with <strong className="font-medium">1+ year</strong> of experience in web development and <strong className="font-medium">100+</strong> solved DSA problems.  
                     I specialize in <strong>Full-Stack Development</strong> and <strong>AI integrations</strong>, building scalable applications while exploring <strong>modern web technologies</strong>, <strong>system design</strong>, and <strong>machine learning</strong>.  
+                    {/*  eslint-disable-next-line react/no-unescaped-entities */}
                     I've built <strong className="font-medium">5+</strong> full-stack projects, including AI-driven apps, web scrapers, and interactive platforms.
                   </p>
 
