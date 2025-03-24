@@ -1,6 +1,5 @@
 "use client";
 import { useState, useEffect } from 'react';
-import Head from 'next/head';
 import ThreeBackground from '../components/ThreeBackground';
 import Navigation from '../components/Navigation';
 import ThemeToggle from '../components/ThemeToggle';
@@ -59,26 +58,22 @@ export default function Home() {
         ${isLoading ? 'opacity-0' : 'opacity-100'} 
         ${theme === 'dark' ? 'text-foreground bg-background' : 'text-black bg-white'}`}
     >
-      <Head>
-        <title>Sanatan Sharma | Designer and Developer</title>
-        <meta name="description" content="Portfolio of Sanatan Sharma, Designer and Developer" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      
 
       <div className="fixed inset-0 z-10 h-screen w-screen overflow-hidden">
         <ThreeBackground theme={theme} />
       </div>
 
-      <div className="relative z-10 min-h-screen flex p-8">
+      <div className="relative z-10 min-h-screen flex p-8 ">
         <div className="container mx-auto max-w-screen-xl">
-          <header className="pt-12 pb-16 font-poppins">
+          <header className=" md:pt-12 pb-4 md:pb-16 font-poppins">
             <h1 className="text-5xl md:text-6xl font-medium tracking-tight">Sanatan Sharma</h1>
             <p className="text-base opacity-75 mt-2 font-light">Designer and Developer</p>
           </header>
 
           <div className="flex flex-col md:flex-row gap-16">
             <aside className="w-full md:w-48 flex-shrink-0">
-              <Navigation activeSection={activeSection} setActiveSection={setActiveSection} />
+              <Navigation  activeSection={activeSection} setActiveSection={setActiveSection} />
               <div className="mt-4">
                 <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
               </div>
@@ -108,12 +103,12 @@ Across various projects,
   <div className="fade-in font-inter">
     <h2 className="text-3xl font-medium mb-6 tracking-tight">Info</h2>
     <div className="max-w-2xl opacity-80 leading-relaxed space-y-6 text-lg font-light">
-      <p>
-        I’m a developer and student with <strong className="font-medium">1+ year</strong> of experience in web development and <strong className="font-medium">100+</strong> solved DSA problems across platforms like LeetCode and Codeforces. I specialize in front-end development, backend systems, and AI integrations, constantly refining my skills and exploring innovative solutions.
-      </p>
-      <p>
-        I have built <strong className="font-medium">5+</strong> full-stack projects, including AI-driven applications, web scrapers, and interactive platforms.
-      </p>
+    <p>
+  I’m a developer and student with <strong className="font-medium">1+ year</strong> of experience in web development and <strong className="font-medium">100+</strong> solved DSA problems.  
+  I specialize in <strong>Full-Stack Development</strong> and <strong>AI integrations</strong>, building scalable applications while exploring <strong>modern web technologies</strong>, <strong>system design</strong>, and <strong>machine learning</strong>.  
+  I’ve built <strong className="font-medium">5+</strong> full-stack projects, including AI-driven apps, web scrapers, and interactive platforms.
+</p>
+
       <p>
         My expertise:
       </p>

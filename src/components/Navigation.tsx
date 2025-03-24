@@ -39,7 +39,7 @@ export default function Navigation({ activeSection, setActiveSection, theme = 'd
         <button
           onClick={toggleMenu}
           aria-label="Toggle menu"
-          className={`transition-colors duration-300 ${theme === 'light' ? 'text-black hover:text-gray-600' : 'text-white hover:text-gray-300'}`}
+          className={`transition-colors duration-300`}
         >
           {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
@@ -53,7 +53,7 @@ export default function Navigation({ activeSection, setActiveSection, theme = 'd
               onClick={() => setActiveSection(item.id)}
               className={`text-sm hover:opacity-100 transition-opacity
                 ${activeSection === item.id ? 'opacity-100' : 'opacity-50'}
-                ${theme === 'light' ? 'text-black' : 'text-white'}`}
+               `}
               style={{ fontFamily: 'var(--font-manrope)' }}
             >
               {item.label}
@@ -66,7 +66,7 @@ export default function Navigation({ activeSection, setActiveSection, theme = 'd
       {isMenuOpen && (
         <div
           className={`md:hidden  top-12 right-0 w-48 shadow-lg rounded-lg z-50 backdrop-blur-sm animate-fadeInUp
-            ${theme === 'light' ? 'bg-white bg-opacity-90' : 'bg-black bg-opacity-75'}`}
+            ${theme === 'light' ? 'bg-white/30 text-black ' : ' bg-black/30 '}`}
         >
           <ul className="py-3">
             {navItems.map((item) => (
@@ -77,7 +77,7 @@ export default function Navigation({ activeSection, setActiveSection, theme = 'd
                     ${activeSection === item.id
                       ? 'opacity-100'
                       : 'opacity-50 hover:opacity-80'}
-                    ${theme === 'light' ? 'text-black' : 'text-white'}`}
+                    `}
                   style={{ fontFamily: 'var(--font-manrope)' }}
                 >
                   {item.label}
