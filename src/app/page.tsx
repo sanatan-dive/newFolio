@@ -115,9 +115,11 @@ export default function Home() {
                 <div className="fade-in font-poppins">
                   <h2 className="text-3xl font-medium mb-6 tracking-tight">Welcome</h2>
                   <p className="max-w-2xl opacity-80 leading-relaxed text-lg font-light">
-                    I’m a designer and developer focused on creating minimal, elegant digital experiences.
-                    My work combines clean aesthetics with thoughtful functionality, leveraging modern
-                    technologies to build memorable interfaces.
+                  I’m a designer and developer passionate about crafting minimal, elegant digital experiences. My work blends clean aesthetics with thoughtful functionality, using modern technologies to build memorable interfaces.
+Across various projects,
+<br/>
+<br/>
+ I’ve achieved <strong>50K+</strong> impressions and <strong>1000+</strong> users within <strong>24K+</strong> hours, showcasing the reach and impact of my work.
                   </p>
                 </div>
               )}
