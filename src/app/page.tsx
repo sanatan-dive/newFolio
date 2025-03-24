@@ -115,7 +115,7 @@ Across various projects,
         I have built <strong className="font-medium">5+</strong> full-stack projects, including AI-driven applications, web scrapers, and interactive platforms.
       </p>
       <p>
-        My expertise spans a wide range of technologies, including:
+        My expertise:
       </p>
       <div className="space-y-4">
         <div>
