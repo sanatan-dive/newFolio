@@ -5,8 +5,7 @@ import ThreeBackground from '../components/ThreeBackground';
 import Navigation from '../components/Navigation';
 import ThemeToggle from '../components/ThemeToggle';
 import { Theme, Section } from '../types';
-import { motion } from "framer-motion";
-import { FiChevronDown, FiChevronUp } from "react-icons/fi";
+import TweetCarousel from '../components/tweet';
 import ProjectsSection from '@/components/ProjectCard';
 import emailjs from '@emailjs/browser';
 
@@ -14,35 +13,10 @@ export default function Home() {
   const [activeSection, setActiveSection] = useState<Section>('home');
   const [theme, setTheme] = useState<Theme>('dark');
   const [isLoading, setIsLoading] = useState(true);
-  const [openIndex, setOpenIndex] = useState(null);
+
   const [formStatus, setFormStatus] = useState<string>('');
 
-  const toggleFAQ = (index: number) => {
-    // @ts-expect-error okay
-    setOpenIndex(openIndex === index ? null : index);
-  };
-  const faqs = [
-    {
-      question: "Which technologies are you most proficient in?",
-      answer: "I specialize in React, Next.js, TypeScript, Tailwind CSS, Firebase, and backend technologies like Node.js and Prisma.",
-    },
-    {
-      question: "How many real-world projects have you developed?",
-      answer: "I've built over 5 full-stack projects, including AI-driven applications, web scrapers, and interactive platforms.",
-    },
-    {
-      question: "Have you worked with AI and machine learning?",
-      answer: "Yes, I've integrated AI models like Gemini AI and have hands-on experience with PyTorch and machine learning concepts.",
-    },
-    {
-      question: "What’s your experience with Data Structures and Algorithms?",
-      answer: "I have solved 100+ DSA problems on platforms like LeetCode and Codeforces, focusing on problem-solving and optimization.",
-    },
-    {
-      question: "Are you available for freelance or open-source collaborations?",
-      answer: "Yes, I'm open to freelance and collaborative opportunities, especially in web development, AI, and software engineering.",
-    },
-  ];
+  
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -138,6 +112,9 @@ Across various projects,
         I’m a developer and student with <strong className="font-medium">1+ year</strong> of experience in web development and <strong className="font-medium">100+</strong> solved DSA problems across platforms like LeetCode and Codeforces. My focus is on building scalable, user-centric solutions with a blend of creativity and technical precision.
       </p>
       <p>
+        I have built <strong className="font-medium">5+</strong> full-stack projects, including AI-driven applications, web scrapers, and interactive platforms. I specialize in front-end development, backend systems, and AI integrations, constantly refining my skills and exploring innovative solutions.
+      </p>
+      <p>
         My expertise spans a wide range of technologies, including:
       </p>
       <div className="space-y-4">
@@ -157,9 +134,7 @@ Across various projects,
           <strong className="font-medium">Other Skills:</strong> Web scraping (Puppeteer, Beautiful Soup), data structures and algorithms, and responsive design principles.
         </div>
       </div>
-      <p>
-        I have built <strong className="font-medium">5+</strong> full-stack projects, including AI-driven applications, web scrapers, and interactive platforms. I specialize in front-end development, backend systems, and AI integrations, constantly refining my skills and exploring innovative solutions.
-      </p>
+     
     </div>
   </div>
 )}
@@ -217,32 +192,11 @@ Across various projects,
                   </div>
                 </div>
               )}
-              {activeSection === 'faq' && (
-                <div className="fade-in font-roboto">
-                  <h2 className="text-3xl font-medium mb-6 tracking-tight">FAQ</h2>
-                  <div className="max-w-2xl space-y-6">
-                    {faqs.map((faq, index) => (
-                      <div key={index} className="border-b border-gray-700 pb-3">
-                        <button
-                          onClick={() => toggleFAQ(index)}
-                          className="flex justify-between items-center w-full text-left text-xl font-medium mb-2 tracking-tight"
-                        >
-                          {faq.question}
-                          {openIndex === index ? <FiChevronUp /> : <FiChevronDown />}
-                        </button>
-                        <motion.div
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{ height: openIndex === index ? 'auto' : 0, opacity: openIndex === index ? 1 : 0 }}
-                          transition={{ duration: 0.3, ease: 'easeInOut' }}
-                          className="overflow-hidden opacity-80"
-                        >
-                          <p className="mt-2 text-lg font-light">{faq.answer}</p>
-                        </motion.div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
+             {activeSection === 'feedback' && (
+  <div className="fade-in">
+    <TweetCarousel />
+  </div>
+)}
             </main>
           </div>
         </div>
