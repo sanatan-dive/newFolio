@@ -1,17 +1,27 @@
-@import "tailwindcss";
 
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+/* Import Tailwind CSS */
+@import "tailwindcss";
+/* Import Fonts from Google Fonts */
+
+/* Define CSS variables for theming */
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --font-poppins: 'Poppins', sans-serif;
+  --font-manrope: 'Manrope', sans-serif;
+  --font-inter: 'Inter', sans-serif;
+  --font-lora: 'Lora', serif;
+  --font-roboto: 'Roboto', sans-serif;
+  --font-space-mono: 'Space Mono', monospace;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
+/* Dark mode theming */
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
@@ -19,8 +29,115 @@
   }
 }
 
+/* Base styles */
+html,
 body {
+  padding: 0;
+  margin: 0;
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-poppins); /* Default to Poppins */
+  font-weight: 400;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom font classes */
+.font-poppins { font-family: var(--font-poppins); }
+.font-manrope { font-family: var(--font-manrope); }
+.font-inter { font-family: var(--font-inter); }
+.font-lora { font-family: var(--font-lora); }
+.font-roboto { font-family: var(--font-roboto); }
+.font-space-mono { font-family: var(--font-space-mono); }
+
+/* ... (rest of your CSS remains unchanged) ... */
+
+* {
+  box-sizing: border-box;
+}
+
+/* Fade-in animation with blur effect */
+.fade-in {
+  animation: fadeIn 1s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    filter: blur(10px);
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+}
+
+/* Section transitions (for Framer Motion) */
+.section-enter {
+  opacity: 0;
+  filter: blur(8px);
+  transform: translateY(20px);
+}
+
+.section-enter-active {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateY(0);
+  transition: opacity 800ms ease-out, filter 800ms ease-out, transform 800ms ease-out;
+}
+
+.section-exit {
+  opacity: 1;
+  filter: blur(0);
+}
+
+.section-exit-active {
+  opacity: 0;
+  filter: blur(8px);
+  transition: opacity 600ms ease-out, filter 600ms ease-out;
+}
+
+/* Fade-in-up animation */
+.animate-fadeInUp {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Vertical text styling */
+.vertical-text {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  font-weight: 500; /* Slightly bolder for emphasis */
+  letter-spacing: 0.05em; /* Subtle spacing for elegance */
+}
+
+/* Custom typography utilities */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-sans);
+  font-weight: 600; /* Medium-bold for headings */
+  letter-spacing: -0.02em; /* Tight tracking for a modern look */
+}
+
+p, span, a {
+  font-family: var(--font-sans);
+  font-weight: 300; /* Light weight for body text */
+}
+
+/* Optional: Hover effects for interactivity */
+button:hover,
+a:hover {
+  transition: all 0.3s ease;
 }
