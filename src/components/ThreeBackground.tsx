@@ -26,10 +26,8 @@ export default function ThreeBackground({ theme }: ThreeBackgroundProps) {
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     containerRef.current.appendChild(renderer.domElement);
 
-    // Noise plane
+    // Noise texture (still needed for wireframe plane displacement)
     const noiseTexture = generateNoiseTexture();
-    const noisePlane = createNoisePlane(noiseTexture, theme);
-    scene.add(noisePlane);
 
     // Wireframe plane
     const wireframePlane = createWireframePlane(noiseTexture, theme);
@@ -69,7 +67,7 @@ export default function ThreeBackground({ theme }: ThreeBackgroundProps) {
 
       if (opacity < 1) {
         opacity = Math.min(opacity + fadeInSpeed, 1);
-        updateOpacities(wireframePlane.material, particles.material, noisePlane.material, opacity, theme);
+        updateOpacities(wireframePlane.material, particles.material, opacity, theme);
         if (containerRef.current) {
           const blur = Math.max(0, 10 * (1 - opacity));
           containerRef.current.style.filter = `blur(${blur}px)`;
@@ -80,8 +78,6 @@ export default function ThreeBackground({ theme }: ThreeBackgroundProps) {
       wireframePlane.rotation.z = Math.sin(frame) * 0.05;
       particles.rotation.x += mouse.y * 0.01 + 0.0005;
       particles.rotation.y += mouse.x * 0.01 + 0.0003;
-      noisePlane.material.map.offset.x += 0.0001;
-      noisePlane.material.map.offset.y += 0.0001;
 
       renderer.render(scene, camera);
     };
@@ -107,20 +103,6 @@ export default function ThreeBackground({ theme }: ThreeBackgroundProps) {
       ctx.filter = 'blur(8px)';
       ctx.drawImage(canvas, 0, 0);
       return canvas;
-    }
-
-    function createNoisePlane(texture: HTMLCanvasElement, theme: Theme): THREE.Mesh {
-      const geometry = new THREE.PlaneGeometry(130, 130);
-      const material = new THREE.MeshBasicMaterial({
-        map: new THREE.Texture(texture),
-        transparent: true,
-        opacity: 0.5,
-        color: theme === 'dark' ? 0x333333 : 0xcccccc
-      });
-      material.map.needsUpdate = true;
-      const mesh = new THREE.Mesh(geometry, material);
-      mesh.position.z = -10;
-      return mesh;
     }
 
     function createWireframePlane(noiseTexture: HTMLCanvasElement, theme: Theme): THREE.Mesh {
@@ -174,10 +156,9 @@ export default function ThreeBackground({ theme }: ThreeBackgroundProps) {
       return new THREE.Points(geometry, material);
     }
 
-    function updateOpacities(wireframeMat: THREE.Material, particleMat: THREE.Material, noiseMat: THREE.Material, opacity: number, theme: Theme) {
+    function updateOpacities(wireframeMat: THREE.Material, particleMat: THREE.Material, opacity: number, theme: Theme) {
       wireframeMat.opacity = (theme === 'dark' ? 0.8 : 0.2) * opacity;
       particleMat.opacity = 0.5 * opacity;
-      noiseMat.opacity = 0.5 * opacity;
     }
 
     // Cleanup
