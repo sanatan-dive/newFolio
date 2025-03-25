@@ -59,37 +59,59 @@ export default function Home() {
                   <h2 className="text-3xl font-medium mb-6 tracking-tight">Welcome</h2>
                   <div className="max-w-2xl opacity-80 leading-relaxed text-lg font-light">
                     <p className="mb-6">
-                       {/* eslint-disable-next-line react/no-unescaped-entities */}
                       I'm a designer and developer passionate about crafting minimal, elegant digital experiences. 
                       My work blends clean aesthetics with thoughtful functionality, using modern technologies to 
-                       {/* eslint-disable-next-line react/no-unescaped-entities */}
                       build memorable interfaces. Across various projects, I've achieved <strong>50K+</strong> 
                       impressions and <strong>1000+</strong> users within <strong>24K+</strong> hours, showcasing 
                       the reach and impact of my work.
                     </p>
-                    <div className="flex gap-6">
-                      <a href="https://github.com/sanatan-dive" target="_blank"  rel="noopener noreferrer" 
-                        className="hover:opacity-70 transition-opacity">
+                    
+                    <div>
+                      <h3 className="text-xl font-medium mb-4 tracking-tight">Contact Me</h3>
+                      <p className="text-lg font-light">
+                       
+                        <a
+                          href="mailto:sanatansharma352@gmail.com"
+                          className="hover:underline hover:text-blue-500 transition-all duration-300"
+                        >
+                          sanatansharma352@gmail.com
+                        </a>
+                      </p>
+                    </div>
+                    <br/>
+                    <hr></hr>
+                    <br></br>
+                    <div className="flex gap-6 mb-8">
+                      <a href="https://github.com/sanatan-dive" target="_blank" rel="noopener noreferrer" 
+                        className="relative group hover:opacity-70 transition-opacity">
                         <FaGithub className="w-6 h-6" />
+                        <span className="absolute left-1/2 transform -translate-x-1/2 bottom-full mb-2 w-max px-2 py-1 bg-white text-black text-sm rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300">GitHub</span>
                       </a>
                       <a href="https://twitter.com/Sanatan_dive" target="_blank" rel="noopener noreferrer" 
-                        className="hover:opacity-70 transition-opacity">
+                        className="relative group hover:opacity-70 transition-opacity">
                         <FaSquareXTwitter className="w-6 h-6" />
+                        <span className="absolute left-1/2 transform -translate-x-1/2 bottom-full mb-2 w-max px-2 py-1 bg-white text-black text-sm rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300">Twitter</span>
                       </a>
                       <a href="https://linkedin.com/in/sanatan-sharma-637605266" target="_blank" rel="noopener noreferrer" 
-                        className="hover:opacity-70 transition-opacity">
+                        className="relative group hover:opacity-70 transition-opacity">
                         <FaLinkedin className="w-6 h-6" />
+                        <span className="absolute left-1/2 transform -translate-x-1/2 bottom-full mb-2 w-max px-2 py-1 bg-white text-black text-sm rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300">LinkedIn</span>
                       </a>
                       <a href="https://leetcode.com/Sanatan_dive" target="_blank" rel="noopener noreferrer" 
-                        className="hover:opacity-70 transition-opacity">
+                        className="relative group hover:opacity-70 transition-opacity">
                         <SiLeetcode className="w-6 h-6" />
+                        <span className="absolute left-1/2 transform -translate-x-1/2 bottom-full mb-2 w-max px-2 py-1 bg-white text-black text-sm rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300">LeetCode</span>
                       </a>
                       <a href="https://drive.google.com/file/d/1OvGCrI1Lc1c4OkufAJ6ZHkbRJPODzC8n/view?usp=sharing" 
                         target="_blank" rel="noopener noreferrer" 
-                        className="hover:opacity-70 transition-opacity">
+                        className="relative group hover:opacity-70 transition-opacity">
                         <FaFileAlt className="w-6 h-6" />
+                        <span className="absolute left-1/2 transform -translate-x-1/2 bottom-full mb-2 w-max px-2 py-1 bg-white text-black text-sm rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300">Resume</span>
                       </a>
+                      
                     </div>
+                    {/* Contact Me Section */}
+                   
                   </div>
                 </div>
               )}
@@ -105,17 +127,17 @@ export default function Home() {
                   <h2 className="text-3xl font-medium mb-6 tracking-tight">Info</h2>
                   <div className="max-w-2xl opacity-80 leading-relaxed space-y-6 text-lg font-light">
                     <p>
-                      
-                      {/* eslint-disable-next-line react/no-unescaped-entities */}
                       I'm a developer and student with <strong className="font-medium">1+ year</strong> of experience 
                       in web development and <strong className="font-medium">100+</strong> solved DSA problems.  
                       I specialize in <strong>Full-Stack Development</strong> and <strong>AI integrations</strong>, 
                       building scalable applications while exploring <strong>modern web technologies</strong>, 
                       <strong>system design</strong>, and <strong>machine learning</strong>.  
-                       {/* eslint-disable-next-line react/no-unescaped-entities */}
                       I've built <strong className="font-medium">5+</strong> full-stack projects, including AI-driven 
                       apps, web scrapers, and interactive platforms.
                     </p>
+                    
+                    <hr></hr>
+                    
                     <p>My expertise:</p>
                     <div className="space-y-4">
                       <div><strong className="font-medium">Front-end:</strong> React, Next.js, TypeScript, Tailwind CSS, Redux, Framer Motion, and modern JavaScript (ES6+).</div>
@@ -123,70 +145,6 @@ export default function Home() {
                       <div><strong className="font-medium">AI/ML:</strong> NumPy, Pandas, PyTorch, AI integrations, and basic NLP and computer vision techniques.</div>
                       <div><strong className="font-medium">Tools & DevOps:</strong> Git, GitHub, Firebase, Vercel, Docker, and CI/CD pipelines.</div>
                       <div><strong className="font-medium">Other Skills:</strong> Web scraping (Puppeteer, Beautiful Soup), data structures and algorithms, and responsive design principles.</div>
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {activeSection === 'links' && (
-                <div className="fade-in font-poppins">
-                  <h2 className="text-3xl font-medium mb-6 tracking-tight">Connect</h2>
-                  <div className="max-w-2xl opacity-80">
-                    <p className="mb-8 text-lg font-light">
-                      Find me around the web and explore my work through these links:
-                    </p>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <a href="https://github.com/sanatan-dive" target="_blank" rel="noopener noreferrer"
-                        className="group flex items-center p-4 rounded border-opacity-20 hover:border-opacity-100 transition-all duration-300">
-                        <div className="w-10 h-10 flex items-center justify-center mr-4">
-                          <FaGithub className='w-6 h-6'/>
-                        </div>
-                        <div>
-                          <h3 className="font-medium text-lg group-hover:underline">GitHub</h3>
-                          <p className="text-sm opacity-75">Explore my code repositories</p>
-                        </div>
-                      </a>
-                      <a href="https://twitter.com/Sanatan_dive" target="_blank" rel="noopener noreferrer"
-                        className="group flex items-center rounded p-4 border-opacity-20 hover:border-opacity-100 transition-all duration-300">
-                        <div className="w-10 h-10 flex items-center justify-center mr-4">
-                          <FaSquareXTwitter className='w-6 h-6'/>
-                        </div>
-                        <div>
-                          <h3 className="font-medium text-lg group-hover:underline">Twitter</h3>
-                          <p className="text-sm opacity-75">Follow me for updates</p>
-                        </div>
-                      </a>
-                      <a href="https://linkedin.com/in/sanatan-sharma-637605266" target="_blank" rel="noopener noreferrer"
-                        className="group rounded flex items-center p-4 border-opacity-20 hover:border-opacity-100 transition-all duration-300">
-                        <div className="w-10 h-10 flex items-center justify-center mr-4">
-                          <FaLinkedin className='w-6 h-6'/>
-                        </div>
-                        <div>
-                          <h3 className="font-medium text-lg group-hover:underline">LinkedIn</h3>
-                          <p className="text-sm opacity-75">Connect professionally</p>
-                        </div>
-                      </a>
-                      <a href="https://leetcode.com/Sanatan_dive" target="_blank" rel="noopener noreferrer"
-                        className="group flex items-center p-4 border-opacity-20 hover:border-opacity-100 transition-all duration-300">
-                        <div className="w-10 h-10 flex items-center justify-center mr-4">
-                         <SiLeetcode className='w-6 h-6'/>
-                        </div>
-                        <div>
-                          <h3 className="font-medium text-lg group-hover:underline">LeetCode</h3>
-                          <p className="text-sm opacity-75">Check my problem-solving skills</p>
-                        </div>
-                      </a>
-                      <a href="https://drive.google.com/file/d/1OvGCrI1Lc1c4OkufAJ6ZHkbRJPODzC8n/view?usp=sharing" 
-                        target="_blank" rel="noopener noreferrer"
-                        className="group flex items-center p-4 border-opacity-20 hover:border-opacity-100 transition-all duration-300 md:col-span-2">
-                        <div className="w-10 h-10 flex items-center justify-center mr-4">
-                         <FaFileAlt className='w-6 h-6'/>
-                        </div>
-                        <div>
-                          <h3 className="font-medium text-lg group-hover:underline">Resume</h3>
-                          <p className="text-sm opacity-75">Download my CV/Resume</p>
-                        </div>
-                      </a>
                     </div>
                   </div>
                 </div>
