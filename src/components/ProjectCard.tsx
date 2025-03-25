@@ -88,21 +88,12 @@ function ProjectCard({ project, index }: ProjectCardProps) {
               {project.description}
             </p>
             <div className="flex gap-3 sm:gap-4">
-              <button 
-                className={`px-3 py-1.5 sm:px-4 sm:py-2 font-medium text-sm sm:text-base transition-colors duration-300 
-                  ${theme === 'light' 
-                    ? 'border border-black text-black hover:bg-black hover:text-white' 
-                    : 'border border-white text-white hover:bg-white hover:text-black'}`}
-                onClick={(e) => e.stopPropagation()}
-                style={{ fontFamily: 'var(--font-manrope)' }}
-              >
-                View Details
-              </button>
+             
               <Link
                 href={project.liveLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`px-3 py-1.5 sm:px-4 sm:py-2 font-medium text-sm sm:text-base text-center transition-colors duration-300
+                className={`px-3 py-1.5 sm:px-4 sm:py-2 rounded font-medium text-sm sm:text-base text-center transition-colors duration-300
                   ${theme === 'light' 
                     ? 'border border-black text-black hover:bg-black hover:text-white' 
                     : 'border border-white text-white hover:bg-white hover:text-black'}`}
