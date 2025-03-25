@@ -18,7 +18,7 @@ export default function Navigation({ activeSection, setActiveSection, theme = 'd
     { id: 'info', label: 'Info' },
     { id: 'links', label: 'Links' },
     { id: 'contact', label: 'Contact' },
-    { id: 'feedback', label: 'Feedbacks' }
+    // { id: 'feedback', label: 'Feedbacks' }
   ];
 
   const toggleMenu = () => {

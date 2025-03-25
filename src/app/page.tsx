@@ -4,7 +4,7 @@ import ThreeBackground from '../components/ThreeBackground';
 import Navigation from '../components/Navigation';
 import ThemeToggle from '../components/ThemeToggle';
 import { Theme, Section } from '../types';
-import TweetCarousel from '../components/tweet';
+
 import ProjectsSection from '@/components/ProjectCard';
 import emailjs from '@emailjs/browser';
 import { FaGithub, FaLinkedin, FaFileAlt } from 'react-icons/fa'; // Added FaFileAlt for resume
@@ -149,7 +149,7 @@ export default function Home() {
                         href="https://github.com/sanatan-dive" 
                         target="_blank" 
                         rel="noopener noreferrer"
-                        className="group flex items-center p-4 border rounded border-opacity-20 hover:border-opacity-100 transition-all duration-300"
+                        className="group flex items-center p-4  rounded border-opacity-20 hover:border-opacity-100 transition-all duration-300"
                       >
                         <div className="w-10 h-10 flex items-center justify-center mr-4">
                           <FaGithub className='w-6 h-6'/>
@@ -164,7 +164,7 @@ export default function Home() {
                         href="https://twitter.com/Sanatan_dive" 
                         target="_blank" 
                         rel="noopener noreferrer"
-                        className="group flex items-center rounded p-4 border border-opacity-20 hover:border-opacity-100 transition-all duration-300"
+                        className="group flex items-center rounded p-4  border-opacity-20 hover:border-opacity-100 transition-all duration-300"
                       >
                         <div className="w-10 h-10 flex items-center justify-center mr-4">
                           <FaSquareXTwitter className='w-6 h-6'/>
@@ -179,7 +179,7 @@ export default function Home() {
                         href="https://linkedin.com/in/sanatan-sharma-637605266" 
                         target="_blank" 
                         rel="noopener noreferrer"
-                        className="group rounded flex items-center p-4 border border-opacity-20 hover:border-opacity-100 transition-all duration-300"
+                        className="group rounded flex items-center p-4  border-opacity-20 hover:border-opacity-100 transition-all duration-300"
                       >
                         <div className="w-10 h-10 flex items-center justify-center mr-4">
                           <FaLinkedin className='w-6 h-6'/>
@@ -194,7 +194,7 @@ export default function Home() {
                         href="https://leetcode.com/Sanatan_dive" 
                         target="_blank" 
                         rel="noopener noreferrer"
-                        className="group flex items-center p-4 border border-opacity-20 hover:border-opacity-100 transition-all duration-300"
+                        className="group flex items-center p-4  border-opacity-20 hover:border-opacity-100 transition-all duration-300"
                       >
                         <div className="w-10 h-10 flex items-center justify-center mr-4">
                          <SiLeetcode className='w-6 h-6'/>
@@ -209,7 +209,7 @@ export default function Home() {
                         href="https://drive.google.com/file/d/1OvGCrI1Lc1c4OkufAJ6ZHkbRJPODzC8n/view?usp=sharing" 
                         target="_blank" 
                         rel="noopener noreferrer"
-                        className="group flex items-center p-4 border border-opacity-20 hover:border-opacity-100 transition-all duration-300 md:col-span-2"
+                        className="group flex items-center p-4  border-opacity-20 hover:border-opacity-100 transition-all duration-300 md:col-span-2"
                       >
                         <div className="w-10 h-10 flex items-center justify-center mr-4">
                          <FaFileAlt className='w-6 h-6'/>
@@ -278,11 +278,7 @@ export default function Home() {
                 </div>
               )}
 
-              {activeSection === 'feedback' && (
-                <div className="fade-in">
-                  <TweetCarousel />
-                </div>
-              )}
+             
             </main>
           </div>
         </div>
