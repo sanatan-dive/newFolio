@@ -64,7 +64,7 @@ export default function Home() {
                       My work blends clean aesthetics with thoughtful functionality, using modern technologies to 
                       build memorable interfaces. Across various 
                              {/* eslint-disable-next-line react/no-unescaped-entities */}
-                      projects, I've achieved <strong>50K+</strong> 
+                       projects, I've achieved <strong>50K+</strong> 
                       impressions and <strong>1000+</strong> users within <strong>24K+</strong> hours, showcasing 
                       the reach and impact of my work.
                     </p>
