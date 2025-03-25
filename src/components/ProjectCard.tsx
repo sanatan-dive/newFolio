@@ -107,8 +107,8 @@ function ProjectCard({ project, index }: ProjectCardProps) {
           
           {/* Mobile indicator that hints at the card being interactive */}
           <div className={`absolute top-2 right-2 w-8 h-8 rounded-full flex items-center justify-center sm:hidden
-            ${theme === 'light' ? 'bg-black bg-opacity-20' : 'bg-white bg-opacity-20'}`}>
-            <span className={`text-xs font-bold ${theme === 'light' ? 'text-black' : 'text-white'}`}>+</span>
+            ${theme === 'dark' ? 'bg-white bg-opacity-20' : 'bg-black bg-opacity-20'}`}>
+            <span className={`text-xs font-bold ${theme === 'dark' ? 'text-black' : 'text-white'}`}>+</span>
           </div>
         </div>
       )}
