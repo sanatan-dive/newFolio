@@ -62,9 +62,8 @@ export default function Home() {
                        {/* eslint-disable-next-line react/no-unescaped-entities */}
                       I'm a designer and developer passionate about crafting minimal, elegant digital experiences. 
                       My work blends clean aesthetics with thoughtful functionality, using modern technologies to 
-                      build memorable interfaces. Across various 
-                             {/* eslint-disable-next-line react/no-unescaped-entities */}
-                       projects, I've achieved <strong>50K+</strong> 
+  {/* eslint-disable-next-line react/no-unescaped-entities */}
+                      build memorable interfaces. Across various projects, I've achieved <strong>50K+</strong> 
                       impressions and <strong>1000+</strong> users within <strong>24K+</strong> hours, showcasing 
                       the reach and impact of my work.
                     </p>
