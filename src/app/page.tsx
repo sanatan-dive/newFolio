@@ -13,13 +13,22 @@ export default function Home() {
   const [activeSection, setActiveSection] = useState<Section>('home');
   const [theme, setTheme] = useState<Theme>('dark');
   const [isLoading, setIsLoading] = useState(true);
+  const [transitionDuration, setTransitionDuration] = useState(1000); // Initial duration in ms
 
+  // Handle initial page load fade-in
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 500); // Adjust timing as needed
+    }, 500); // Initial load delay
     return () => clearTimeout(timer);
   }, []);
+
+  // Adjust transition duration when activeSection changes
+  useEffect(() => {
+    if (!isLoading) { // Only adjust after initial load
+      setTransitionDuration((prev) => Math.min(prev + 500, 2500)); // Increase by 500ms, cap at 2500ms
+    }
+  }, [activeSection, isLoading]);
 
   const toggleTheme = (): void => {
     setTheme(theme === 'dark' ? 'light' : 'dark');
@@ -27,9 +36,10 @@ export default function Home() {
 
   return (
     <div
-      className={`min-h-screen w-full transition-all duration-1000 ease-in-out
+      className={`min-h-screen w-full transition-all ease-in-out
         ${isLoading ? 'opacity-0 blur-md' : 'opacity-100 blur-0'} 
         ${theme === 'dark' ? 'text-foreground bg-background' : 'text-black bg-white'}`}
+      style={{ transitionDuration: `${transitionDuration}ms` }} // Dynamic duration
     >
       <div className="fixed inset-0 z-10 h-screen w-screen overflow-hidden">
         <ThreeBackground theme={theme} />
@@ -59,11 +69,10 @@ export default function Home() {
                   <h2 className="text-3xl font-medium mb-6 tracking-tight">Welcome</h2>
                   <div className="max-w-2xl opacity-80 leading-relaxed text-lg font-light">
                     <p className="mb-6">
-
-                      {/*  eslint-disable-next-line react/no-unescaped-entities */}
+                      {/* eslint-disable-next-line react/no-unescaped-entities */}
                       I'm a designer and developer passionate about crafting minimal, elegant digital experiences. 
                       My work blends clean aesthetics with thoughtful functionality, using modern technologies to 
-                            {/*  eslint-disable-next-line react/no-unescaped-entities */}
+                      {/* eslint-disable-next-line react/no-unescaped-entities */}
                       build memorable interfaces. Across various projects, I've achieved <strong>50K+</strong> 
                       impressions and <strong>1000+</strong> users within <strong>24K+</strong> hours, showcasing 
                       the reach and impact of my work.
@@ -84,7 +93,7 @@ export default function Home() {
                     <hr></hr>
                     <br></br>
                     <div className="flex gap-6 mb-8">
-                    <a href="https://drive.google.com/file/d/1OvGCrI1Lc1c4OkufAJ6ZHkbRJPODzC8n/view?usp=sharing" 
+                      <a href="https://drive.google.com/file/d/1OvGCrI1Lc1c4OkufAJ6ZHkbRJPODzC8n/view?usp=sharing" 
                         target="_blank" rel="noopener noreferrer" 
                         className="relative group hover:opacity-70 transition-opacity">
                         <FaFileAlt className="w-6 h-6" />
@@ -105,13 +114,11 @@ export default function Home() {
                         <FaSquareXTwitter className="w-6 h-6" />
                         <span className="absolute left-1/2 transform -translate-x-1/2 bottom-full mb-2 w-max px-2 py-1 bg-white text-black text-sm rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300">Twitter</span>
                       </a>
-                      
                       <a href="https://leetcode.com/Sanatan_dive" target="_blank" rel="noopener noreferrer" 
                         className="relative group hover:opacity-70 transition-opacity">
                         <SiLeetcode className="w-6 h-6" />
                         <span className="absolute left-1/2 transform -translate-x-1/2 bottom-full mb-2 w-max px-2 py-1 bg-white text-black text-sm rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300">LeetCode</span>
                       </a>
-                     
                     </div>
                   </div>
                 </div>
@@ -128,13 +135,13 @@ export default function Home() {
                   <h2 className="text-3xl font-medium mb-6 tracking-tight">Info</h2>
                   <div className="max-w-2xl opacity-80 leading-relaxed space-y-6 text-lg font-light">
                     <p>
-                            {/*  eslint-disable-next-line react/no-unescaped-entities */}
+                      {/* eslint-disable-next-line react/no-unescaped-entities */}
                       I'm a developer and student with <strong className="font-medium">1+ year</strong> of experience 
                       in web development and <strong className="font-medium">100+</strong> solved DSA problems.  
                       I specialize in <strong>Full-Stack Development</strong> and <strong>AI integrations</strong>, 
                       building scalable applications while exploring <strong>modern web technologies</strong>, 
                       <strong>system design</strong>, and <strong>machine learning</strong>.  
-                            {/*  eslint-disable-next-line react/no-unescaped-entities */}
+                      {/* eslint-disable-next-line react/no-unescaped-entities */}
                       I've built <strong className="font-medium">5+</strong> full-stack projects, including AI-driven 
                       apps, web scrapers, and interactive platforms.
                     </p>
