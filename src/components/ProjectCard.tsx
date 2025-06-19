@@ -7,6 +7,7 @@ import project1 from "@/projects/project-1.webp";
 import project2 from "@/projects/project-2.webp";
 import project3 from "@/projects/project-3.webp";
 import project4 from "@/projects/project-4.webp";
+import project5 from "@/projects/project-5.webp";
 
 interface ThemeContextType {
   theme: 'light' | 'dark';
@@ -124,6 +125,13 @@ interface ProjectsSectionProps {
 export default function ProjectsSection({ activeSection, theme = 'dark' }: ProjectsSectionProps) {
   const projects: Project[] = [
     {
+      image: project5,
+      title: 'Capsulr',
+      description: 'TimeCapsule lets you send messages, memories, or surprises into the future — all stored safely on the blockchain.',
+      githubLink: 'https://github.com/sanatan-dive/chronos',
+      liveLink: 'https://t-ime-capsule-monad.vercel.app',
+    },
+    {
       image: project2,  
       title: 'KOSU',
       description: 'An event hosting platform for seamless hackathon organization, engagement hiring, utilizing AI automation and blockchain-based tokens and rewards.',
@@ -151,6 +159,7 @@ export default function ProjectsSection({ activeSection, theme = 'dark' }: Proje
       githubLink: 'https://github.com/sanatan-dive/xchatbot',
       liveLink: 'https://twibble-alpha.vercel.app/',
     },
+    
   ];
   
 
