@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from 'react';
+
 import { Home, FolderOpen, Info, FileText, Github, Linkedin, Twitter } from 'lucide-react';
 import { SiLeetcode } from 'react-icons/si';
 import { Theme, Section } from '../types';
@@ -17,7 +17,7 @@ interface DockIconProps {
   className?: string;
   onClick?: () => void;
 }
-
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const Dock = ({ children, direction = "middle", className = "" }: DockProps) => {
   return (
     <div className={`flex items-center justify-center p-2 bg-black/20 backdrop-blur-md rounded-2xl border border-white/10 ${className}`}>
@@ -45,6 +45,7 @@ interface NavigationProps {
   theme?: Theme;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export default function Navigation({ activeSection, setActiveSection, theme = 'dark' }: NavigationProps) {
   const navItems: { id: Section; label: string; icon: React.ReactNode }[] = [
     { id: 'home', label: 'Home', icon: <Home size={20} /> },

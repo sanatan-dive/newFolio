@@ -5,10 +5,8 @@ import Navigation from '../components/Navigation';
 import ThemeToggle from '../components/ThemeToggle';
 import { Theme, Section } from '../types';
 import ProjectsSection from '@/components/ProjectCard';
-import { FaGithub, FaLinkedin, FaFileAlt } from 'react-icons/fa';
-import { FaSquareXTwitter } from "react-icons/fa6";
 import { SiLeetcode } from "react-icons/si";
-import { FileText, Github, Linkedin, Twitter, X } from 'lucide-react';
+import { FileText, Github, Linkedin, Twitter,  } from 'lucide-react';
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState<Section>('home');
