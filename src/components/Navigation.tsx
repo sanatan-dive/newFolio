@@ -1,26 +1,30 @@
 "use client";
 
+import React, { useState } from 'react';
+import { Home, FolderOpen, Info, FileText, Github, Linkedin, Twitter, Sun, Moon } from 'lucide-react';
+import { Theme } from '../types';
 
-import { Home, FolderOpen, Info, FileText, Github, Linkedin, Twitter } from 'lucide-react';
-import { SiLeetcode } from 'react-icons/si';
-import { Theme, Section } from '../types';
-
-// Dock Components (based on your provided dock code)
+// Enhanced Dock Components with magnification
 interface DockProps {
   children: React.ReactNode;
-  direction?: "top" | "middle" | "bottom";
   className?: string;
+  iconMagnification?: number;
+  iconDistance?: number;
 }
 
 interface DockIconProps {
   children: React.ReactNode;
   className?: string;
   onClick?: () => void;
+  onMouseEnter?: () => void;
+  onMouseLeave?: () => void;
+  scale?: number;
 }
+
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const Dock = ({ children, direction = "middle", className = "" }: DockProps) => {
+const Dock = ({ children, className = "", iconMagnification = 60, iconDistance = 100 }: DockProps) => {
   return (
-    <div className={`flex items-center justify-center p-2 bg-black/20 backdrop-blur-md rounded-2xl border border-white/10 ${className}`}>
+    <div className={`flex items-center justify-center p-3 bg-black/20 dark:bg-black/40 backdrop-blur-md rounded-2xl border border-white/10 dark:border-white/20 ${className}`}>
       <div className="flex items-center gap-2">
         {children}
       </div>
@@ -28,25 +32,36 @@ const Dock = ({ children, direction = "middle", className = "" }: DockProps) => 
   );
 };
 
-const DockIcon = ({ children, className = "", onClick }: DockIconProps) => {
+const DockIcon = ({ children, className = "", onClick, onMouseEnter, onMouseLeave, scale = 1 }: DockIconProps) => {
   return (
     <div 
-      className={`flex items-center justify-center w-12 h-12 rounded-xl hover:bg-white/10 transition-all duration-200 cursor-pointer ${className}`}
+      className={`flex items-center justify-center w-12 h-12 rounded-xl hover:bg-white/10 dark:hover:bg-white/20 transition-all duration-300 cursor-pointer transform ${className}`}
       onClick={onClick}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+      style={{ 
+        transform: `scale(${scale})`,
+        transformOrigin: 'center bottom'
+      }}
     >
       {children}
     </div>
   );
 };
 
+// Theme and Section types are imported or defined
+type Section = 'home' | 'projects' | 'info';
+
 interface NavigationProps {
   activeSection: Section;
   setActiveSection: (section: Section) => void;
-  theme?: Theme;
+  theme: Theme;
+  toggleTheme: () => void;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export default function Navigation({ activeSection, setActiveSection, theme = 'dark' }: NavigationProps) {
+export default function Navigation({ activeSection, setActiveSection, theme, toggleTheme }: NavigationProps) {
+  const [hoveredIcon, setHoveredIcon] = useState<number | null>(null);
+
   const navItems: { id: Section; label: string; icon: React.ReactNode }[] = [
     { id: 'home', label: 'Home', icon: <Home size={20} /> },
     { id: 'projects', label: 'Projects', icon: <FolderOpen size={20} /> },
@@ -74,19 +89,14 @@ export default function Navigation({ activeSection, setActiveSection, theme = 'd
       icon: <Twitter size={20} />,
       label: "Twitter"
     },
-    {
-      href: "https://leetcode.com/Sanatan_dive",
-      icon: <SiLeetcode size={20} />,
-      label: "LeetCode"
-    }
   ];
 
   const handleNavClick = (section: Section) => {
     setActiveSection(section);
     
-    // On desktop view (md and above), use smooth scrolling
+    // Smooth scrolling for desktop
     const element = document.getElementById(section);
-    if (element && window.innerWidth >= 768) { // 768px is the md breakpoint in Tailwind
+    if (element && window.innerWidth >= 768) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
   };
@@ -95,76 +105,117 @@ export default function Navigation({ activeSection, setActiveSection, theme = 'd
     window.open(href, '_blank', 'noopener noreferrer');
   };
 
+  const getIconScale = (index: number) => {
+    if (hoveredIcon === null) return 1;
+    const distance = Math.abs(index - hoveredIcon);
+    if (distance === 0) return 1.4;
+    if (distance === 1) return 1.2;
+    if (distance === 2) return 1.1;
+    return 1;
+  };
+
+  const allItems = [...navItems, ...socialLinks.map(link => ({ ...link, id: link.label }))];
+
   return (
-    <div>
-    <nav
-      className="relative fade-in"
-      style={{ fontFamily: 'var(--font-manrope)' }}
-    >
+    <div className="transition-colors duration-300">
       {/* Desktop Navigation */}
-      <ul className="hidden md:block space-y-4">
-        {navItems.map((item) => (
-          <li key={item.id}>
-            <button
-              onClick={() => handleNavClick(item.id)}
-              className={`text-sm hover:opacity-100 transition-opacity
-                ${activeSection === item.id ? 'opacity-100' : 'opacity-50'}
-              `}
-              style={{ fontFamily: 'var(--font-manrope)' }}
-            >
-              {item.label}
-            </button>
-          </li>
-        ))}
-      </ul>
+      <nav
+        className="hidden md:block relative fade-in"
+        style={{ fontFamily: 'var(--font-manrope, system-ui)' }}
+      >
+        <ul className="space-y-4">
+          {navItems.map((item) => (
+            <li key={item.id}>
+              <button
+                onClick={() => handleNavClick(item.id)}
+                className={`text-sm hover:opacity-100 transition-opacity 
+                  ${activeSection === item.id ? 'opacity-100 ' : 'opacity-50'}
+                `}
+                style={{ fontFamily: 'var(--font-manrope, system-ui)' }}
+              >
+                {item.label}
+              </button>
+            </li>
+          ))}
+        </ul>
+      </nav>
 
       {/* Mobile Dock Navigation */}
-      
-
-     
-    </nav>
-    <div className="md:hidden fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50">
-        <Dock direction="middle">
+      <div className="md:hidden fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50">
+        <Dock>
           {/* Navigation Items */}
-          {navItems.map((item) => (
+          {navItems.map((item, index) => (
             <DockIcon
               key={item.id}
               onClick={() => handleNavClick(item.id)}
+              onMouseEnter={() => setHoveredIcon(index)}
+              onMouseLeave={() => setHoveredIcon(null)}
+              scale={getIconScale(index)}
               className={`relative group ${
-                activeSection === item.id ? 'bg-white/20' : ''
+                activeSection === item.id ? 'bg-white/20 dark:bg-white/30' : ''
               }`}
             >
-              <div className={`${activeSection === item.id ? 'text-white' : 'text-white/70'}`}>
+              <div className={`transition-colors duration-200 ${
+                activeSection === item.id 
+                  ? 'text-white dark:text-white' 
+                  : 'text-white/70 dark:text-white/60'
+              }`}>
                 {item.icon}
               </div>
               {/* Tooltip */}
-              <span className="absolute bottom-full mb-2 left-1/2 transform -translate-x-1/2 w-max px-2 py-1 bg-black text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+              <span className="absolute bottom-full mb-2 left-1/2 transform -translate-x-1/2 w-max px-2 py-1 bg-black/80 dark:bg-black/90 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
                 {item.label}
               </span>
             </DockIcon>
           ))}
           
           {/* Divider */}
-          <div className="w-px h-8 bg-white/20 mx-1"></div>
+          <div className="w-px h-8 bg-white/20 dark:bg-white/30 mx-1"></div>
           
           {/* Social Links */}
-          {socialLinks.map((link, index) => (
-            <DockIcon
-              key={index}
-              onClick={() => handleSocialClick(link.href)}
-              className="relative group"
-            >
-              <div className="text-white/70 hover:text-white transition-colors">
-                {link.icon}
-              </div>
-              {/* Tooltip */}
-              <span className="absolute bottom-full mb-2 left-1/2 transform -translate-x-1/2 w-max px-2 py-1 bg-black text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                {link.label}
-              </span>
-            </DockIcon>
-          ))}
+          {socialLinks.map((link, index) => {
+            const iconIndex = navItems.length + 1 + index; // +1 for divider
+            return (
+              <DockIcon
+                key={index}
+                onClick={() => handleSocialClick(link.href)}
+                onMouseEnter={() => setHoveredIcon(iconIndex)}
+                onMouseLeave={() => setHoveredIcon(null)}
+                scale={getIconScale(iconIndex)}
+                className="relative group"
+              >
+                <div className="text-white/70 dark:text-white/60 hover:text-white dark:hover:text-white transition-colors duration-200">
+                  {link.icon}
+                </div>
+                {/* Tooltip */}
+                <span className="absolute bottom-full mb-2 left-1/2 transform -translate-x-1/2 w-max px-2 py-1 bg-black/80 dark:bg-black/90 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
+                  {link.label}
+                </span>
+              </DockIcon>
+            );
+          })}
+
+          {/* Another Divider */}
+          <div className="w-px h-8 bg-white/20 dark:bg-white/30 mx-1"></div>
+          
+          {/* Theme Toggle */}
+          <DockIcon
+            onClick={toggleTheme}
+            onMouseEnter={() => setHoveredIcon(allItems.length + 1)} // +1 for divider
+            onMouseLeave={() => setHoveredIcon(null)}
+            scale={getIconScale(allItems.length + 1)}
+            className="relative group"
+          >
+            <div className="text-white/70 dark:text-white/60 hover:text-white dark:hover:text-white transition-colors duration-200">
+              {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+            </div>
+            {/* Tooltip */}
+            <span className="absolute bottom-full mb-2 left-1/2 transform -translate-x-1/2 w-max px-2 py-1 bg-black/80 dark:bg-black/90 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
+              {theme === 'dark' ? 'Light Mode' : 'Dark Mode'}
+            </span>
+          </DockIcon>
         </Dock>
       </div>
-      </div>
+    </div>
   );
 }

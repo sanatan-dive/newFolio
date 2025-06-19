@@ -1,4 +1,5 @@
 "use client";
+
 import { useState, useEffect } from 'react';
 import ThreeBackground from '../components/ThreeBackground';
 import Navigation from '../components/Navigation';
@@ -6,7 +7,7 @@ import ThemeToggle from '../components/ThemeToggle';
 import { Theme, Section } from '../types';
 import ProjectsSection from '@/components/ProjectCard';
 import { SiLeetcode } from "react-icons/si";
-import { FileText, Github, Linkedin, Twitter,  } from 'lucide-react';
+import { FileText, Github, Linkedin, Twitter } from 'lucide-react';
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState<Section>('home');
@@ -29,6 +30,16 @@ export default function Home() {
     }
   }, [activeSection, isLoading]);
 
+  // Theme effect
+  useEffect(() => {
+    const root = document.documentElement;
+    if (theme === 'dark') {
+      root.classList.add('dark');
+    } else {
+      root.classList.remove('dark');
+    }
+  }, [theme]);
+
   const toggleTheme = (): void => {
     setTheme(theme === 'dark' ? 'light' : 'dark');
   };
@@ -47,17 +58,21 @@ export default function Home() {
       <div className="relative z-10 min-h-screen flex p-8">
         <div className="container mx-auto max-w-screen-xl">
           <header className="md:pt-12 pb-4 md:pb-16 font-poppins">
-            <h1 className="text-5xl md:text-6xl font-medium tracking-tight">Sanatan Sharma</h1>
+            <h1 className="text-3xl md:text-6xl font-medium tracking-tight">Sanatan Sharma</h1>
             <p className="text-base opacity-75 mt-2 font-light">Designer and Developer</p>
           </header>
 
           <div className="flex flex-col md:flex-row gap-16">
             <aside className="w-full md:w-48 flex-shrink-0">
               <Navigation 
-                activeSection={activeSection} 
-                setActiveSection={setActiveSection} 
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+              // @ts-ignore
+                activeSection={activeSection}
+                setActiveSection={setActiveSection}
+                theme={theme}
+                toggleTheme={toggleTheme}
               />
-              <div className="mt-4">
+              <div className="hidden sm:block mt-4">
                 <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
               </div>
             </aside>
