@@ -62,7 +62,7 @@ export default function Home() {
             <p className="text-base opacity-75 mt-2 font-light">Designer and Developer</p>
           </header>
 
-          <div className="flex flex-col md:flex-row gap-16">
+          <div className="flex flex-col md:flex-row gap-4 sm:gap-16">
             <aside className="w-full md:w-48 flex-shrink-0">
               <Navigation 
               // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -72,7 +72,7 @@ export default function Home() {
                 theme={theme}
                 toggleTheme={toggleTheme}
               />
-              <div className="hidden sm:block mt-4">
+              <div className="hidden sm:block sm:mt-4">
                 <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
               </div>
             </aside>
