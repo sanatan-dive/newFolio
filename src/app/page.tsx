@@ -8,6 +8,7 @@ import ProjectsSection from '@/components/ProjectCard';
 import { FaGithub, FaLinkedin, FaFileAlt } from 'react-icons/fa';
 import { FaSquareXTwitter } from "react-icons/fa6";
 import { SiLeetcode } from "react-icons/si";
+import { FileText, Github, Linkedin, Twitter, X } from 'lucide-react';
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState<Section>('home');
@@ -92,26 +93,26 @@ export default function Home() {
                     <br/>
                     <hr></hr>
                     <br></br>
-                    <div className="flex gap-6 mb-8">
+                    <div className="hidden sm:flex gap-6 mb-8">
                       <a href="https://drive.google.com/file/d/1OvGCrI1Lc1c4OkufAJ6ZHkbRJPODzC8n/view?usp=sharing" 
                         target="_blank" rel="noopener noreferrer" 
                         className="relative group hover:opacity-70 transition-opacity">
-                        <FaFileAlt className="w-6 h-6" />
+                        <FileText className="w-6 h-6" />
                         <span className="absolute left-1/2 transform -translate-x-1/2 bottom-full mb-2 w-max px-2 py-1 bg-white text-black text-sm rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300">Resume</span>
                       </a>
                       <a href="https://github.com/sanatan-dive" target="_blank" rel="noopener noreferrer" 
                         className="relative group hover:opacity-70 transition-opacity">
-                        <FaGithub className="w-6 h-6" />
+                        <Github className="w-6 h-6" />
                         <span className="absolute left-1/2 transform -translate-x-1/2 bottom-full mb-2 w-max px-2 py-1 bg-white text-black text-sm rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300">GitHub</span>
                       </a>
                       <a href="https://linkedin.com/in/sanatan-sharma-637605266" target="_blank" rel="noopener noreferrer" 
                         className="relative group hover:opacity-70 transition-opacity">
-                        <FaLinkedin className="w-6 h-6" />
+                        <Linkedin className="w-6 h-6" />
                         <span className="absolute left-1/2 transform -translate-x-1/2 bottom-full mb-2 w-max px-2 py-1 bg-white text-black text-sm rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300">LinkedIn</span>
                       </a>
                       <a href="https://twitter.com/Sanatan_dive" target="_blank" rel="noopener noreferrer" 
                         className="relative group hover:opacity-70 transition-opacity">
-                        <FaSquareXTwitter className="w-6 h-6" />
+                        <Twitter className="w-6 h-6" />
                         <span className="absolute left-1/2 transform -translate-x-1/2 bottom-full mb-2 w-max px-2 py-1 bg-white text-black text-sm rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300">Twitter</span>
                       </a>
                       <a href="https://leetcode.com/Sanatan_dive" target="_blank" rel="noopener noreferrer" 
