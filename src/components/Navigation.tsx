@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import { Home, FolderOpen, Info, FileText, Github, Linkedin, Twitter, Sun, Moon } from 'lucide-react';
+import { Home, FolderOpen, Info, FileText, Github, Linkedin, Twitter, Sun, Moon } from 'lucide';
 import { Theme } from '../types';
 
 // Enhanced Dock Components with magnification
@@ -24,8 +24,8 @@ interface DockIconProps {
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const Dock = ({ children, className = "", iconMagnification = 60, iconDistance = 100 }: DockProps) => {
   return (
-    <div className={`flex items-center justify-center p-3 bg-black/20 dark:bg-black/40 backdrop-blur-md rounded-2xl border border-white/10 dark:border-white/20 ${className}`}>
-      <div className="flex items-center gap-2">
+    <div className={`flex items-center justify-center p-2 bg-black/20 dark:bg-black/40 backdrop-blur-md rounded-xl border border-white/10 dark:border-white/20 ${className}`}>
+      <div className="flex items-center gap-1">
         {children}
       </div>
     </div>
@@ -35,7 +35,7 @@ const Dock = ({ children, className = "", iconMagnification = 60, iconDistance =
 const DockIcon = ({ children, className = "", onClick, onMouseEnter, onMouseLeave, scale = 1 }: DockIconProps) => {
   return (
     <div 
-      className={`flex items-center justify-center w-12 h-12 rounded-xl hover:bg-white/10 dark:hover:bg-white/20 transition-all duration-300 cursor-pointer transform ${className}`}
+      className={`flex items-center justify-center w-10 h-10 rounded-lg hover:bg-white/10 dark:hover:bg-white/20 transition-all duration-300 cursor-pointer transform ${className}`}
       onClick={onClick}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
@@ -63,30 +63,30 @@ export default function Navigation({ activeSection, setActiveSection, theme, tog
   const [hoveredIcon, setHoveredIcon] = useState<number | null>(null);
 
   const navItems: { id: Section; label: string; icon: React.ReactNode }[] = [
-    { id: 'home', label: 'Home', icon: <Home size={20} /> },
-    { id: 'projects', label: 'Projects', icon: <FolderOpen size={20} /> },
-    { id: 'info', label: 'Info', icon: <Info size={20} /> },
+    { id: 'home', label: 'Home', icon: <Home size={16} /> },
+    { id: 'projects', label: 'Projects', icon: <FolderOpen size={16} /> },
+    { id: 'info', label: 'Info', icon: <Info size={16} /> },
   ];
 
   const socialLinks = [
     {
       href: "https://drive.google.com/file/d/1OvGCrI1Lc1c4OkufAJ6ZHkbRJPODzC8n/view?usp=sharing",
-      icon: <FileText size={20} />,
+      icon: <FileText size={16} />,
       label: "Resume"
     },
     {
       href: "https://github.com/sanatan-dive",
-      icon: <Github size={20} />,
+      icon: <Github size={16} />,
       label: "GitHub"
     },
     {
       href: "https://linkedin.com/in/sanatan-sharma-637605266",
-      icon: <Linkedin size={20} />,
+      icon: <Linkedin size={16} />,
       label: "LinkedIn"
     },
     {
       href: "https://twitter.com/Sanatan_dive",
-      icon: <Twitter size={20} />,
+      icon: <Twitter size={16} />,
       label: "Twitter"
     },
   ];
@@ -108,9 +108,9 @@ export default function Navigation({ activeSection, setActiveSection, theme, tog
   const getIconScale = (index: number) => {
     if (hoveredIcon === null) return 1;
     const distance = Math.abs(index - hoveredIcon);
-    if (distance === 0) return 1.4;
-    if (distance === 1) return 1.2;
-    if (distance === 2) return 1.1;
+    if (distance === 0) return 1.3;
+    if (distance === 1) return 1.15;
+    if (distance === 2) return 1.05;
     return 1;
   };
 
@@ -141,7 +141,7 @@ export default function Navigation({ activeSection, setActiveSection, theme, tog
       </nav>
 
       {/* Mobile Dock Navigation */}
-      <div className="md:hidden fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50">
+      <div className="md:hidden fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50">
         <Dock>
           {/* Navigation Items */}
           {navItems.map((item, index) => (
@@ -163,14 +163,14 @@ export default function Navigation({ activeSection, setActiveSection, theme, tog
                 {item.icon}
               </div>
               {/* Tooltip */}
-              <span className="absolute bottom-full mb-2 left-1/2 transform -translate-x-1/2 w-max px-2 py-1 bg-black/80 dark:bg-black/90 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
+              <span className="absolute bottom-full mb-1 left-1/2 transform -translate-x-1/2 w-max px-1.5 py-0.5 bg-black/80 dark:bg-black/90 text-white text-[10px] rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
                 {item.label}
               </span>
             </DockIcon>
           ))}
           
           {/* Divider */}
-          <div className="w-px h-8 bg-white/20 dark:bg-white/30 mx-1"></div>
+          <div className="w-px h-6 bg-white/20 dark:bg-white/30 mx-0.5"></div>
           
           {/* Social Links */}
           {socialLinks.map((link, index) => {
@@ -188,7 +188,7 @@ export default function Navigation({ activeSection, setActiveSection, theme, tog
                   {link.icon}
                 </div>
                 {/* Tooltip */}
-                <span className="absolute bottom-full mb-2 left-1/2 transform -translate-x-1/2 w-max px-2 py-1 bg-black/80 dark:bg-black/90 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
+                <span className="absolute bottom-full mb-1 left-1/2 transform -translate-x-1/2 w-max px-1.5 py-0.5 bg-black/80 dark:bg-black/90 text-white text-[10px] rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
                   {link.label}
                 </span>
               </DockIcon>
@@ -196,7 +196,7 @@ export default function Navigation({ activeSection, setActiveSection, theme, tog
           })}
 
           {/* Another Divider */}
-          <div className="w-px h-8 bg-white/20 dark:bg-white/30 mx-1"></div>
+          <div className="w-px h-6 bg-white/20 dark:bg-white/30 mx-0.5"></div>
           
           {/* Theme Toggle */}
           <DockIcon
@@ -207,10 +207,10 @@ export default function Navigation({ activeSection, setActiveSection, theme, tog
             className="relative group"
           >
             <div className="text-white/70 dark:text-white/60 hover:text-white dark:hover:text-white transition-colors duration-200">
-              {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+              {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
             </div>
             {/* Tooltip */}
-            <span className="absolute bottom-full mb-2 left-1/2 transform -translate-x-1/2 w-max px-2 py-1 bg-black/80 dark:bg-black/90 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
+            <span className="absolute bottom-full mb-1 left-1/2 transform -translate-x-1/2 w-max px-1.5 py-0.5 bg-black/80 dark:bg-black/90 text-white text-[10px] rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
               {theme === 'dark' ? 'Light Mode' : 'Dark Mode'}
             </span>
           </DockIcon>

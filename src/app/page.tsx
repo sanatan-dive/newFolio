@@ -58,7 +58,7 @@ export default function Home() {
       <div className="relative z-10 min-h-screen flex p-8">
         <div className="container mx-auto max-w-screen-xl">
           <header className="md:pt-12 pb-4 md:pb-16 font-poppins">
-            <h1 className="text-3xl md:text-6xl font-medium tracking-tight">Sanatan Sharma</h1>
+            <h1 className="text-4xl md:text-6xl font-medium tracking-tight">Sanatan Sharma</h1>
             <p className="text-base opacity-75 mt-2 font-light">Designer and Developer</p>
           </header>
 
