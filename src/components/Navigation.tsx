@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import { Home, FolderOpen, Info, FileText, Github, Linkedin, Twitter, Sun, Moon } from 'lucide';
+import { Home, FolderOpen, Info, FileText, Github, Linkedin, Twitter, Sun, Moon } from 'lucide-react';
 import { Theme } from '../types';
 
 // Enhanced Dock Components with magnification
