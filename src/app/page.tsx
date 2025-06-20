@@ -62,6 +62,8 @@ export default function Home() {
             <p className="text-base opacity-75 mt-2 font-light">Designer and Developer</p>
           </header>
 
+          <hr className='pt-6 sm:hidden opacity-80'/>
+
           <div className="flex flex-col md:flex-row gap-4 sm:gap-16">
             <aside className="w-full md:w-48 flex-shrink-0">
               <Navigation 
