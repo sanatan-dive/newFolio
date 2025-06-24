@@ -9,6 +9,7 @@ import ProjectsSection from '@/components/ProjectCard';
 import { SiLeetcode } from "react-icons/si";
 import { FileText, Github, Linkedin, Twitter } from 'lucide-react';
 
+
 export default function Home() {
   const [activeSection, setActiveSection] = useState<Section>('home');
   const [theme, setTheme] = useState<Theme>('dark');
@@ -46,12 +47,23 @@ export default function Home() {
 
   return (
     <div
-      className={`min-h-screen w-full transition-all ease-in-out
+      className={`min-h-screen w-full transition-all ease-in-out ]
         ${isLoading ? 'opacity-0 blur-md' : 'opacity-100 blur-0'} 
         ${theme === 'dark' ? 'text-foreground bg-background' : 'text-black bg-white'}`}
       style={{ transitionDuration: `${transitionDuration}ms` }} // Dynamic duration
     >
-      <div className="fixed inset-0 z-10 h-screen w-screen overflow-hidden">
+      <div
+    className="absolute inset-0"
+    style={{
+      backgroundImage: `url(/bg.jpg)`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      backgroundRepeat: 'no-repeat',
+      opacity:0.3,
+    zIndex: 1
+    }}
+  />
+      <div className="fixed inset-0 z-10 h-screen w-screen  overflow-hidden">
         <ThreeBackground theme={theme} />
       </div>
 
@@ -99,7 +111,7 @@ export default function Home() {
                       <p className="text-lg font-light">
                         <a
                           href="mailto:sanatansharma352@gmail.com"
-                          className="hover:underline hover:text-blue-500 transition-all duration-300"
+                          className="hover:underline hover:text-gray-300 transition-all duration-300"
                         >
                           sanatansharma352@gmail.com
                         </a>

@@ -50,7 +50,7 @@ const Dock = ({ children, className = "", iconMagnification = 60, iconDistance =
 const DockIcon = ({ children, className = "", onClick, onMouseEnter, onMouseLeave, scale = 1 }: DockIconProps) => {
   return (
     <div 
-      className={`flex items-center justify-center w-10 h-10 rounded-xl hover:bg-white/10 dark:hover:bg-white/20 transition-all duration-300 cursor-pointer transform ${className}`}
+      className={`flex items-center justify-center w-9 h-9 rounded-xl hover:bg-white/10 dark:hover:bg-white/20 transition-all duration-300 cursor-pointer transform ${className}`}
       onClick={onClick}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
