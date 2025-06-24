@@ -3,11 +3,11 @@ import Link from 'next/link';
 import { FaGithub, FaLink } from 'react-icons/fa';
 import { useState } from 'react';
 // Import your images correctly
-import project1 from "@/projects/project-1.webp";
-import project2 from "@/projects/project-2.webp";
-import project3 from "@/projects/project-3.webp";
-import project4 from "@/projects/project-4.webp";
-import project5 from "@/projects/project-5.webp";
+import project1 from '@/projects/project-1.webp';
+import project2 from '@/projects/project-2.webp';
+import project3 from '@/projects/project-3.webp';
+import project4 from '@/projects/project-4.webp';
+import project5 from '@/projects/project-5.webp';
 
 interface ThemeContextType {
   theme: 'light' | 'dark';
@@ -20,7 +20,7 @@ const ThemeContext = {
 };
 
 interface Project {
-  // eslint-disable-next-line
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   image: any; 
   title: string;
   description: string;
@@ -58,7 +58,7 @@ function ProjectCard({ project, index }: ProjectCardProps) {
           {/* Info overlay - visible on hover (desktop) or tap (mobile) */}
           <div 
             className={`absolute inset-0 ${theme === 'light' ? 'bg-white' : 'bg-black'} ${theme === 'light' ? 'bg-opacity-80' : 'bg-opacity-60'} flex flex-col justify-end p-4 sm:p-6 backdrop-blur-sm transition-opacity duration-500
-              ${isActive ? 'opacity-100' : 'opacity-0 hover:opacity-75'}`}
+              ${isActive ? 'opacity-100' : 'opacity-0 group-hover:opacity-75'}`}
             style={{ fontFamily: 'var(--font-manrope)' }} // Explicitly set font-family
           >
             <div className="flex items-center justify-between mb-2">
@@ -89,7 +89,6 @@ function ProjectCard({ project, index }: ProjectCardProps) {
               {project.description}
             </p>
             <div className="flex gap-3 sm:gap-4">
-             
               <Link
                 href={project.liveLink}
                 target="_blank"
@@ -123,6 +122,8 @@ interface ProjectsSectionProps {
 }
 
 export default function ProjectsSection({ activeSection, theme = 'dark' }: ProjectsSectionProps) {
+  const [showAll, setShowAll] = useState(false); // State to toggle showing all projects on mobile
+
   const projects: Project[] = [
     {
       image: project5,
@@ -159,9 +160,7 @@ export default function ProjectsSection({ activeSection, theme = 'dark' }: Proje
       githubLink: 'https://github.com/sanatan-dive/xchatbot',
       liveLink: 'https://twibble-alpha.vercel.app/',
     },
-    
   ];
-  
 
   return (
     <>
@@ -177,10 +176,27 @@ export default function ProjectsSection({ activeSection, theme = 'dark' }: Proje
             Projects
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-            {projects.map((project, index) => (
+            {projects.slice(0, showAll || window.innerWidth >= 640 ? projects.length : 3).map((project, index) => (
               <ProjectCard key={index} project={project} index={index} />
             ))}
           </div>
+          {/* View More/View Less Button - Visible only on mobile */}
+          {projects.length > 3 && (
+            <div className="flex justify-center mt-6 sm:hidden">
+              <button
+                onClick={() => setShowAll(!showAll)}
+                aria-expanded={showAll}
+                aria-label={showAll ? 'Collapse to show fewer projects' : 'Expand to show more projects'}
+                className={`px-4 py-2 rounded font-medium text-sm sm:text-base transition-colors duration-300
+                  ${theme === 'light'
+                    ? 'border border-black text-black hover:bg-black hover:text-white'
+                    : 'border border-white text-white hover:bg-white hover:text-black'}`}
+                style={{ fontFamily: 'var(--font-manrope)' }}
+              >
+                {showAll ? 'View Less' : 'View More'}
+              </button>
+            </div>
+          )}
         </div>
       )}
     </>

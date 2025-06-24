@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { Home, FolderOpen, Info, FileText, Github, Linkedin, Twitter, Sun, Moon } from 'lucide-react';
+import { Home, FolderOpen, Info, FileText,  } from 'lucide-react';
 import { Theme } from '../types';
 
 // Enhanced Dock Components with magnification
@@ -50,7 +50,7 @@ const Dock = ({ children, className = "", iconMagnification = 60, iconDistance =
 const DockIcon = ({ children, className = "", onClick, onMouseEnter, onMouseLeave, scale = 1 }: DockIconProps) => {
   return (
     <div 
-      className={`flex items-center justify-center w-9 h-9 rounded-xl hover:bg-white/10 dark:hover:bg-white/20 transition-all duration-300 cursor-pointer transform ${className}`}
+      className={`flex items-center justify-center w-12 h-12 rounded-xl hover:bg-white/10 dark:hover:bg-white/20 transition-all duration-300 cursor-pointer transform ${className}`}
       onClick={onClick}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
@@ -74,7 +74,7 @@ interface NavigationProps {
   toggleTheme: () => void;
 }
 
-export default function Navigation({ activeSection, setActiveSection, theme, toggleTheme }: NavigationProps) {
+export default function Navigation({ activeSection, setActiveSection,  }: NavigationProps) {
   const [hoveredIcon, setHoveredIcon] = useState<number | null>(null);
 
   const navItems: { id: Section; label: string; icon: React.ReactNode }[] = [
@@ -89,21 +89,7 @@ export default function Navigation({ activeSection, setActiveSection, theme, tog
       icon: <FileText size={16} />,
       label: "Resume"
     },
-    {
-      href: "https://github.com/sanatan-dive",
-      icon: <Github size={16} />,
-      label: "GitHub"
-    },
-    {
-      href: "https://linkedin.com/in/sanatan-sharma-637605266",
-      icon: <Linkedin size={16} />,
-      label: "LinkedIn"
-    },
-    {
-      href: "https://twitter.com/Sanatan_dive",
-      icon: <Twitter size={16} />,
-      label: "Twitter"
-    },
+    
   ];
 
   const handleNavClick = (section: Section) => {
@@ -129,7 +115,7 @@ export default function Navigation({ activeSection, setActiveSection, theme, tog
     return 1;
   };
 
-  const allItems = [...navItems, ...socialLinks.map(link => ({ ...link, id: link.label }))];
+  
 
   return (
     <div className="transition-colors duration-300">
@@ -211,10 +197,10 @@ export default function Navigation({ activeSection, setActiveSection, theme, tog
           })}
 
           {/* Another Divider */}
-          <div className="w-px h-6 bg-white/20 dark:bg-white/30 mx-1"></div>
+          {/* <div className="w-px h-6 bg-white/20 dark:bg-white/30 mx-1"></div> */}
           
           {/* Theme Toggle */}
-          <DockIcon
+          {/* <DockIcon
             onClick={toggleTheme}
             onMouseEnter={() => setHoveredIcon(allItems.length + 1)} // +1 for divider
             onMouseLeave={() => setHoveredIcon(null)}
@@ -224,11 +210,11 @@ export default function Navigation({ activeSection, setActiveSection, theme, tog
             <div className="text-white/70 dark:text-white/60 hover:text-white dark:hover:text-white transition-colors duration-200">
               {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
             </div>
-            {/* Tooltip */}
+            
             <span className="absolute bottom-full mb-2 left-1/2 transform -translate-x-1/2 w-max px-2 py-1 bg-black/80 dark:bg-black/90 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
               {theme === 'dark' ? 'Light Mode' : 'Dark Mode'}
             </span>
-          </DockIcon>
+          </DockIcon> */}
         </Dock>
       </div>
     </div>
