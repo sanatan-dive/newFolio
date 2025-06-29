@@ -7,7 +7,7 @@ import ThemeToggle from '../components/ThemeToggle';
 import { Theme, Section } from '../types';
 import ProjectsSection from '@/components/ProjectCard';
 import { SiLeetcode } from "react-icons/si";
-import { Github, Linkedin, Twitter } from 'lucide-react';
+import { FileText, Github, Linkedin, Twitter } from 'lucide-react';
 
 
 export default function Home() {
@@ -107,12 +107,12 @@ export default function Home() {
                    
                    
                     <div className=" flex gap-6 mb-8">
-                      {/* <a href="https://drive.google.com/file/d/1OvGCrI1Lc1c4OkufAJ6ZHkbRJPODzC8n/view?usp=sharing" 
+                      <a href="https://drive.google.com/file/d/1OvGCrI1Lc1c4OkufAJ6ZHkbRJPODzC8n/view?usp=sharing" 
                         target="_blank" rel="noopener noreferrer" 
-                        className="relative group hover:opacity-70 transition-opacity">
+                        className="relative hidden sm:block group hover:opacity-70 transition-opacity">
                         <FileText className="w-6 h-6" />
                         <span className="absolute left-1/2 transform -translate-x-1/2 bottom-full mb-2 w-max px-2 py-1 bg-white text-black text-sm rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300">Resume</span>
-                      </a> */}
+                      </a>
                       <a href="https://github.com/sanatan-dive" target="_blank" rel="noopener noreferrer" 
                         className="relative group hover:opacity-70 transition-opacity">
                         <Github className="w-6 h-6" />
