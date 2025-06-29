@@ -159,32 +159,36 @@ export default function Home() {
               )}
 
               {activeSection === 'info' && (
-                <div className="fade-in font-inter mb-16">
-                  <h2 className="text-3xl font-medium mb-6 tracking-tight">Info</h2>
-                  <div className="max-w-2xl opacity-80 leading-relaxed space-y-6 text-lg font-light">
-                    <p>
-                      {/* eslint-disable-next-line react/no-unescaped-entities */}
-                      I'm a developer and student. <br/>
-                      I specialize in <strong>Full-Stack Development</strong> and <strong>AI integrations</strong>, 
-                      building scalable applications while exploring <strong>modern web technologies</strong>, 
-                      <strong>system design</strong>, and <strong>machine learning</strong>.  
-                      {/* eslint-disable-next-line react/no-unescaped-entities */}
-                      
-                    </p>
-                    
-                    <hr></hr>
-                    
-                    <p>My expertise:</p>
-                    <div className="space-y-4">
-                      <div><strong className="font-medium">Front-end:</strong> React, Next.js, TypeScript, Tailwind CSS, Redux, Framer Motion, and modern JavaScript (ES6+).</div>
-                      <div><strong className="font-medium">Back-end:</strong> Node.js, Express.js, Prisma, MongoDB, PostgreSQL, and RESTful API design.</div>
-                      <div><strong className="font-medium">AI/ML:</strong> NumPy, Pandas, PyTorch, AI integrations, and basic NLP and computer vision techniques.</div>
-                      <div><strong className="font-medium">Tools & DevOps:</strong> Git, GitHub, Firebase, Vercel, Docker, and CI/CD pipelines.</div>
-                      <div><strong className="font-medium">Other Skills:</strong> Web scraping (Puppeteer, Beautiful Soup), data structures and algorithms, and responsive design principles.</div>
-                    </div>
-                  </div>
-                </div>
-              )}
+  <div className="fade-in font-inter mb-16">
+    <h2 className="text-3xl font-medium mb-6 tracking-tight">Info</h2>
+    <div className="max-w-2xl opacity-80 leading-relaxed space-y-6 text-lg font-light">
+      <p>
+        {/* eslint-disable-next-line react/no-unescaped-entities */}
+        I'm a developer and student. <br/>
+        I specialize in <strong>Full-Stack Development</strong> and <strong>AI integrations</strong>, 
+        building scalable applications while exploring <strong>modern web technologies</strong>, 
+        <strong>system design</strong>, and <strong>machine learning</strong>.  
+        {/* eslint-disable-next-line react/no-unescaped-entities */}
+      </p>
+      <hr/>
+              <p>Achievements:</p>
+      <ul className="list-disc font-light list-inside space-y-2">
+        <li>Winner of <strong>IPD Expo</strong> at college</li>
+        <li>Winner at <strong>Cyberthon.AI</strong></li>
+        <li>1st runner-up at <strong>Monad Blitz</strong></li>
+        <li>Top 10 among 5000 participants in <strong>HackWithIndia</strong></li>
+      </ul>
+
+
+      
+
+      
+
+    
+    </div>
+  </div>
+)}
+
             </main>
           </div>
         </div>
