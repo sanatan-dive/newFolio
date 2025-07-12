@@ -8,6 +8,7 @@ import project2 from '@/projects/project-2.webp';
 import project3 from '@/projects/project-3.webp';
 import project4 from '@/projects/project-4.webp';
 import project5 from '@/projects/project-5.webp';
+import project6 from '@/projects/project-6.webp';
 
 interface ThemeContextType {
   theme: 'light' | 'dark';
@@ -26,6 +27,7 @@ interface Project {
   description: string;
   githubLink: string;
   liveLink: string;
+  status: 'live' | 'working'; // Added status field
 }
 
 interface ProjectCardProps {
@@ -54,6 +56,18 @@ function ProjectCard({ project, index }: ProjectCardProps) {
             fill
             className={`object-cover transition-transform duration-700 group-hover:scale-110 filter ${theme === 'dark' ? 'grayscale-25' : 'grayscale-50'}`}
           />
+          
+          {/* Status Tag - appears on hover */}
+          <div className={`absolute top-3 left-3 px-3 py-1.5 rounded-full text-xs font-medium backdrop-blur-sm z-10 
+            transition-all duration-300 transform
+            ${isActive ? 'opacity-100 scale-100' : 'opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100'}
+            ${project.status === 'live' 
+              ? 'bg-green-500 bg-opacity-90 text-white shadow-lg shadow-green-500/25' 
+              : 'bg-yellow-500 bg-opacity-90 text-white shadow-lg shadow-yellow-500/25'}`}
+            style={{ fontFamily: 'var(--font-manrope)' }}
+          >
+            {project.status === 'live' ? '● Live' : '● Working'}
+          </div>
           
           {/* Info overlay - visible on hover (desktop) or tap (mobile) */}
           <div 
@@ -131,13 +145,15 @@ export default function ProjectsSection({ activeSection, theme = 'dark' }: Proje
       description: 'TimeCapsule lets you send messages, memories, or surprises into the future — all stored safely on the blockchain.',
       githubLink: 'https://github.com/sanatan-dive/chronos',
       liveLink: 'https://t-ime-capsule-monad.vercel.app',
+      status: 'live', // Added status
     },
     {
-      image: project2,  
-      title: 'KOSU',
-      description: 'An event hosting platform for seamless hackathon organization, engagement hiring, utilizing AI automation and blockchain-based tokens and rewards.',
-      githubLink: 'https://github.com/sanatan-dive/kosu',
-      liveLink: 'https://kosu-xi.vercel.app/',
+      image: project6,  
+      title: 'Hirin',
+      description: 'Get hired using hiring, we automate the process of finding a job',
+      githubLink: 'https://github.com/sanatan-dive/hiring',
+      liveLink: 'https://hiring-blue.vercel.app/',
+      status: 'working', // Added status
     },
     {
       image: project1,  
@@ -145,21 +161,34 @@ export default function ProjectsSection({ activeSection, theme = 'dark' }: Proje
       description: 'A web platform that curates top learning resources from YouTube, Udemy, Coursera, and blogs.',
       githubLink: 'https://github.com/sanatan-dive/learnify',
       liveLink: 'https://drive.google.com/file/d/1BcwIWMqF_JLxzu_MP2X9FZN4zvnJHMX7/view',
+      status: 'working', // Added status
     },
+    {
+      image: project2,  
+      title: 'KOSU',
+      description: 'An event hosting platform for seamless hackathon organization, engagement hiring, utilizing AI automation and blockchain-based tokens and rewards.',
+      githubLink: 'https://github.com/sanatan-dive/kosu',
+      liveLink: 'https://kosu-xi.vercel.app/',
+      status: 'live', // Added status
+    },
+    
     {
       image: project3,  
       title: 'Hackathon Club Website',
       description: 'A platform to discover and register for hackathons, connect with developers, and showcase skills.',
       githubLink: 'https://github.com/sanatan-dive/hackathon-club-frontend',
       liveLink: 'https://hackathon-club-frontend.vercel.app/home',
+      status: 'live', // Added status
     },
     {
       image: project4,  
       title: 'Twibble',
-      description: 'An AI-powered chatbot that mimics Twitter users’ personas for engaging conversations.',
+      description: 'An AI-powered chatbot that mimics Twitter users personas for engaging conversations.',
       githubLink: 'https://github.com/sanatan-dive/xchatbot',
       liveLink: 'https://twibble-alpha.vercel.app/',
+      status: 'live', // Added status
     },
+    
   ];
 
   return (
