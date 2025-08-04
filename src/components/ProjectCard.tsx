@@ -225,11 +225,11 @@ export default function ProjectsSection({ activeSection, theme = 'dark' }: Proje
   return (
     <>
       {activeSection === 'projects' && (
-        <div className={`fade-in px-4 overflow-x-hidden sm:px-0 ${theme === 'light' ? 'text-black' : 'text-white'}`}>
+        <div className={`fade-in px-4 overflow-hidden sm:px-0 ${theme === 'light' ? 'text-black' : 'text-white'}`}>
           <h2 className="text-2xl sm:text-3xl font-semibold mb-4 sm:mb-6 font-inter ">
             Projects
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4  sm:gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 overflow-hidden sm:gap-6">
             {visibleProjects.map((project, index) => (
               <div
                 key={`${project.title}-${index}`}

@@ -11,17 +11,24 @@ import { SiLeetcode } from "react-icons/si";
 import { FileText, Github, Linkedin, Twitter } from 'lucide-react';
 
 export default function Home() {
-  const [activeSection, setActiveSection] = useState<Section>('home');
+ const [activeSection, setActiveSection] = useState<Section>('home');
   const [theme, setTheme] = useState<Theme>('dark');
   const [isLoading, setIsLoading] = useState(true);
+  const [transitionDuration, setTransitionDuration] = useState(800); // Initial duration in ms
 
-  // Handle initial page load fade-in with improved timing
-  useEffect(() => {
+ useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 2500); // Extended time to show the beautiful loading animation
+    }, 500); // Initial load delay
     return () => clearTimeout(timer);
   }, []);
+
+  // Adjust transition duration when activeSection changes
+  useEffect(() => {
+    if (!isLoading) { // Only adjust after initial load
+      setTransitionDuration((prev) => Math.min(prev + 100, 2500)); // Increase by 500ms, cap at 2500ms
+    }
+  }, [activeSection, isLoading]);
 
   // Theme effect with smooth transitions
   useEffect(() => {
@@ -47,13 +54,13 @@ export default function Home() {
     <>
     
       
-      <div
-        className={`min-h-screen w-full transition-all duration-700 ease-out
-          ${isLoading ? 'opacity-0 blur-sm scale-[0.98]' : 'opacity-100 blur-0 scale-100'} 
-          ${theme === 'dark' ? 'text-foreground bg-background' : 'text-black bg-white'}`}
-        style={{ willChange: 'transform, opacity, filter' }}
-      >
-      {/* Background Image with improved performance and adaptive opacity */}
+       <div
+      className={`min-h-screen w-full transition-all ease-in-out ]
+        ${isLoading ? 'opacity-0 blur-md' : 'opacity-100 blur-0'} 
+        ${theme === 'dark' ? 'text-foreground bg-background' : 'text-black bg-white'}`}
+      style={{ transitionDuration: `${transitionDuration}ms` }} // Dynamic duration
+    >
+        
       <div
     className="fixed inset-0 z-0 h-screen w-screen bg-cover bg-center bg-no-repeat"
     style={{
