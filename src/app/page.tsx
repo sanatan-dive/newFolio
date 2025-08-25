@@ -89,7 +89,7 @@ export default function Home() {
             </p>
           </header>
 
-           <div className="flex flex-col md:flex-row gap-2 sm:gap-4">
+           <div className="flex flex-col md:flex-row gap-2 sm:gap-16">
             <aside className="w-full md:w-48 flex-shrink-0">
               <Navigation 
                 activeSection={activeSection}
