@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { Home, FolderOpen, Info, FileText,  } from 'lucide-react';
+import { Home, FolderOpen, Info, FileText, Briefcase } from 'lucide-react';
 import { Theme } from '../types';
 
 // Enhanced Dock Components with magnification
@@ -56,7 +56,7 @@ const DockIcon = ({ children, className = "", onClick, onMouseEnter, onMouseLeav
       onMouseLeave={onMouseLeave}
       style={{ 
         transform: `scale(${scale})`,
-        transformOrigin: 'center bottom'
+        transformOrigin: 'center center'
       }}
     >
       {children}
@@ -65,7 +65,7 @@ const DockIcon = ({ children, className = "", onClick, onMouseEnter, onMouseLeav
 };
 
 // Theme and Section types are imported or defined
-type Section = 'home' | 'projects' | 'info';
+type Section = 'home' | 'projects' | 'work' | 'info';
 
 interface NavigationProps {
   activeSection: Section;
@@ -80,6 +80,7 @@ export default function Navigation({ activeSection, setActiveSection,  }: Naviga
   const navItems: { id: Section; label: string; icon: React.ReactNode }[] = [
     { id: 'home', label: 'Home', icon: <Home size={16} /> },
     { id: 'projects', label: 'Projects', icon: <FolderOpen size={16} /> },
+    { id: 'work', label: 'Experience', icon: <Briefcase size={16} /> },
     { id: 'info', label: 'Info', icon: <Info size={16} /> },
   ];
 
@@ -196,25 +197,7 @@ export default function Navigation({ activeSection, setActiveSection,  }: Naviga
             );
           })}
 
-          {/* Another Divider */}
-          {/* <div className="w-px h-6 bg-white/20 dark:bg-white/30 mx-1"></div> */}
           
-          {/* Theme Toggle */}
-          {/* <DockIcon
-            onClick={toggleTheme}
-            onMouseEnter={() => setHoveredIcon(allItems.length + 1)} // +1 for divider
-            onMouseLeave={() => setHoveredIcon(null)}
-            scale={getIconScale(allItems.length + 1)}
-            className="relative group"
-          >
-            <div className="text-white/70 dark:text-white/60 hover:text-white dark:hover:text-white transition-colors duration-200">
-              {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
-            </div>
-            
-            <span className="absolute bottom-full mb-2 left-1/2 transform -translate-x-1/2 w-max px-2 py-1 bg-black/80 dark:bg-black/90 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
-              {theme === 'dark' ? 'Light Mode' : 'Dark Mode'}
-            </span>
-          </DockIcon> */}
         </Dock>
       </div>
     </div>

@@ -89,7 +89,7 @@ export default function Home() {
             </p>
           </header>
 
-          <div className="flex flex-col md:flex-row gap-4 sm:gap-16">
+           <div className="flex flex-col md:flex-row gap-2 sm:gap-16">
             <aside className="w-full md:w-48 flex-shrink-0">
               <Navigation 
                 activeSection={activeSection}
@@ -158,6 +158,77 @@ export default function Home() {
               {activeSection === 'projects' && (
                 <div className="fade-in font-inter mb-16">
                   <ProjectsSection activeSection={activeSection} theme={theme} />
+                </div>
+              )}
+
+              {activeSection === 'work' && (
+                <div className="fade-in font-inter mb-16">
+                  <h2 className="text-2xl sm:text-3xl font-semibold mb-6 tracking-tight text-foreground dark:text-foreground">Experience</h2>
+                  <div className="max-w-3xl space-y-8">
+                    {/* Full Stack Intern */}
+                    <div className="border-l-2 border-primary/30 dark:border-primary/40 pl-6 relative">
+                      <div className="absolute -left-[7px] top-1 w-3 h-3  dark:bg-white rounded-full border-2 border-background dark:border-background"></div>
+                      <div className="space-y-2">
+                        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                          <h3 className="text-lg sm:text-xl font-semibold tracking-tight text-primary dark:text-primary">Full Stack Intern</h3>
+                          <span className="text-sm opacity-80 font-light text-foreground dark:text-foreground">August 2024 – Present</span>
+                        </div>
+                        <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
+                          <p className="font-medium text-primary dark:text-primary">Dodge AI</p>
+                          <span className="hidden sm:inline text-foreground/60 dark:text-foreground/60">•</span>
+                          <span className="text-sm opacity-80 font-light text-foreground dark:text-foreground">Remote</span>
+                        </div>
+                        <ul className="mt-4 space-y-2 text-sm sm:text-base font-light opacity-95 leading-relaxed">
+                          <li className="flex items-start gap-2">
+                            <span className="text-primary/70 dark:text-primary/70 mt-1.5">•</span>
+                            <span>Converting Figma designs into pixel-perfect, responsive frontend interfaces for industry professionals</span>
+                          </li>
+                          <li className="flex items-start gap-2">
+                            <span className="text-primary/70 dark:text-primary/70 mt-1.5">•</span>
+                            <span>Optimizing UI/UX workflows and implementing smooth interactions to enhance user experience</span>
+                          </li>
+                          <li className="flex items-start gap-2">
+                            <span className="text-primary/70 dark:text-primary/70 mt-1.5">•</span>
+                            <span>Collaborating with cross-functional teams to deliver scalable web applications with modern tech stack</span>
+                          </li>
+                          <li className="flex items-start gap-2">
+                            <span className="text-primary/70 dark:text-primary/70 mt-1.5">•</span>
+                            <span>Ensuring cross-browser compatibility and mobile responsiveness across all developed interfaces</span>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+
+                    {/* Vice President */}
+                    <div className="border-l-2 border-accent/30 dark:border-accent/40 pl-6 relative">
+                      <div className="absolute -left-[7px] top-1 w-3 h-3 bg-white dark:bg-white rounded-full border-2 border-background dark:border-background"></div>
+                      <div className="space-y-2">
+                        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                          <h3 className="text-lg sm:text-xl font-semibold tracking-tight text-accent dark:text-accent">Vice President</h3>
+                          <span className="text-sm opacity-80 font-light text-foreground dark:text-foreground">November 2024 – Present</span>
+                        </div>
+                        <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
+                          <p className="font-medium text-accent dark:text-accent">Hackathon Club of CCET</p>
+                          <span className="hidden sm:inline text-foreground/60 dark:text-foreground/60">•</span>
+                          <span className="text-sm opacity-80 font-light text-foreground dark:text-foreground">Onsite, India</span>
+                        </div>
+                        <ul className="mt-4 space-y-2 text-sm sm:text-base font-light opacity-95 leading-relaxed">
+                          <li className="flex items-start gap-2">
+                            <span className="text-accent/70 dark:text-accent/70 mt-1.5">•</span>
+                            <span>Leading club initiatives to foster innovation through hackathons and technical workshops</span>
+                          </li>
+                          <li className="flex items-start gap-2">
+                            <span className="text-accent/70 dark:text-accent/70 mt-1.5">•</span>
+                            <span>Organizing events with 200+ participants and mentoring teams in building impactful technology solutions</span>
+                          </li>
+                          <li className="flex items-start gap-2">
+                            <span className="text-accent/70 dark:text-accent/70 mt-1.5">•</span>
+                            <span>Managing partnerships with industry sponsors and coordinating with faculty for seamless event execution</span>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               )}
 
