@@ -171,7 +171,7 @@ export default function Home() {
                       <div className="space-y-2">
                         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
                           <h3 className="text-lg sm:text-xl font-semibold tracking-tight text-primary dark:text-primary">Full Stack Intern</h3>
-                          <span className="text-sm opacity-80 font-light text-foreground dark:text-foreground">August 2024 – Present</span>
+                          <span className="text-sm opacity-80 font-light text-foreground dark:text-foreground">August 2025 – Present</span>
                         </div>
                         <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
                           <p className="font-medium text-primary dark:text-primary">Dodge AI</p>
@@ -181,19 +181,19 @@ export default function Home() {
                         <ul className="mt-4 space-y-2 text-sm sm:text-base font-light opacity-95 leading-relaxed">
                           <li className="flex items-start gap-2">
                             <span className="text-primary/70 dark:text-primary/70 mt-1.5">•</span>
-                            <span>Converting Figma designs into pixel-perfect, responsive frontend interfaces for industry professionals</span>
+                            <span>Converting Figma designs into pixel-perfect, responsive frontend interfaces using modern frameworks</span>
                           </li>
                           <li className="flex items-start gap-2">
                             <span className="text-primary/70 dark:text-primary/70 mt-1.5">•</span>
-                            <span>Optimizing UI/UX workflows and implementing smooth interactions to enhance user experience</span>
+                            <span>Building robust APIs with comprehensive error handling and optimized data retrieval mechanisms</span>
                           </li>
                           <li className="flex items-start gap-2">
                             <span className="text-primary/70 dark:text-primary/70 mt-1.5">•</span>
-                            <span>Collaborating with cross-functional teams to deliver scalable web applications with modern tech stack</span>
+                            <span>Integrating APIs seamlessly with frontend components to ensure smooth data flow and user interactions</span>
                           </li>
                           <li className="flex items-start gap-2">
                             <span className="text-primary/70 dark:text-primary/70 mt-1.5">•</span>
-                            <span>Ensuring cross-browser compatibility and mobile responsiveness across all developed interfaces</span>
+                            <span>Implementing authentication systems and middleware for secure and scalable web application architecture</span>
                           </li>
                         </ul>
                       </div>
