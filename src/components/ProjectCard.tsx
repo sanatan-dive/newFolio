@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { FaGithub, FaLink } from 'react-icons/fa';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 // Import your images correctly
 import project1 from '@/projects/project-1.webp';
 import project2 from '@/projects/project-2.webp';
@@ -160,6 +160,18 @@ interface ProjectsSectionProps {
 
 export default function ProjectsSection({ activeSection, theme = 'dark' }: ProjectsSectionProps) {
   const [showAll, setShowAll] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(true); // Default to showing all on first render
+
+  // SSR-safe screen size detection
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsDesktop(window.innerWidth >= 640);
+    };
+    
+    checkScreenSize(); // Check on mount
+    window.addEventListener('resize', checkScreenSize);
+    return () => window.removeEventListener('resize', checkScreenSize);
+  }, []);
 
   const projects: Project[] = [
     {
@@ -237,9 +249,8 @@ export default function ProjectsSection({ activeSection, theme = 'dark' }: Proje
     },
   ];
 
-  const visibleProjects = showAll || typeof window !== 'undefined' && window.innerWidth >= 640 
-    ? projects 
-    : projects.slice(0, 3);
+  // Show all on desktop, or if user clicked "View More" on mobile
+  const visibleProjects = isDesktop || showAll ? projects : projects.slice(0, 3);
 
   return (
     <>

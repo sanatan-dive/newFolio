@@ -7,20 +7,21 @@ interface ThemeToggleProps {
 
 export default function ThemeToggle({ theme, toggleTheme }: ThemeToggleProps) {
   return (
-    <div className="flex flex-col space-y-1 font-space-mono">
+    <div className="flex flex-row items-center justify-between gap-2 font-body">
       <button
         onClick={toggleTheme}
-        className={`w-4 h-4 rounded-full opacity-50 hover:opacity-100 transition-opacity transition-transform duration-200 ${
-          theme === 'dark' ? 'border border-white' : 'border border-black'
-        }`}
+        className={`w-4 h-4 rounded-full transition-all duration-200 
+          hover:opacity-100 hover:scale-125
+          ${theme === 'dark' 
+            ? 'border border-white opacity-50 hover:bg-white/20' 
+            : 'border border-black opacity-50 hover:bg-black/20'
+          }`}
         aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
-        style={{ transformOrigin: 'center center' }}
-        onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.2)'}
-        onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
       >
         <span className="sr-only">{theme === 'dark' ? 'Light' : 'Dark'}</span>
       </button>
-      <span className="text-xs opacity-50 vertical-text ">
+      <span className={`text-xs  rotate-90   opacity-50 tracking-wider
+        ${theme === 'dark' ? 'text-white' : 'text-black'}`}>
         {theme === 'dark' ? 'LIGHT' : 'DARK'}
       </span>
     </div>
